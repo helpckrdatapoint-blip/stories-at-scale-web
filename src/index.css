@@ -127,4 +127,17 @@ All colors MUST be HSL.
     animation: fade-in 0.6s ease-out forwards;
     opacity: 0;
   }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 0.5rem));
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll var(--animation-duration, 40s) linear infinite var(--animation-direction, forwards);
+  }
 }

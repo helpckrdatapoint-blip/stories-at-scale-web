@@ -1,22 +1,44 @@
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <nav className="fixed top-4 left-4 right-4 z-50 bg-background/95 backdrop-blur-md border border-border rounded-full shadow-lg">
-      <div className="container mx-auto px-8 py-4">
-        <div className="flex items-center justify-between">
-          <div className="text-xl font-semibold">
-            Stories at Scale
-          </div>
+    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 bg-background/80 backdrop-blur-lg border border-border rounded-full px-6 py-3 shadow-lg">
+      <div className="flex items-center justify-between w-full min-w-[600px]">
+        <div className="font-bold text-xl text-foreground">
+          Stories at Scale
+        </div>
+        
+        <div className="hidden md:flex items-center space-x-8 ml-auto">
+          <button 
+            onClick={() => scrollToSection('services')}
+            className="text-foreground hover:text-primary transition-colors"
+          >
+            Services
+          </button>
+          <button 
+            onClick={() => scrollToSection('about')}
+            className="text-foreground hover:text-primary transition-colors"
+          >
+            About
+          </button>
+          <button 
+            onClick={() => scrollToSection('contact')}
+            className="text-foreground hover:text-primary transition-colors"
+          >
+            Contact
+          </button>
           
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#services" className="text-foreground hover:text-primary transition-colors">Services</a>
-            <a href="#about" className="text-foreground hover:text-primary transition-colors">About</a>
-            <a href="#testimonials" className="text-foreground hover:text-primary transition-colors">Testimonials</a>
-            <a href="#contact" className="text-foreground hover:text-primary transition-colors">Contact</a>
-          </div>
-          
-          <Button variant="default" className="hidden md:block">
+          <Button 
+            onClick={() => scrollToSection('contact')}
+            className="rounded-full"
+          >
             Get Started
           </Button>
         </div>
