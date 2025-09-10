@@ -16,6 +16,9 @@ const Statement = () => {
     }
   ];
 
+  // Calculate the middle index to apply special styling
+  const middleIndex = Math.floor(features.length / 2);
+
   return (
     <section className="py-20 bg-secondary">
       <div className="container mx-auto px-6">
@@ -28,22 +31,25 @@ const Statement = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
-            {features.map((feature, index) => (
-              <WobbleCard
-                key={index}
-                containerClassName="col-span-1 min-h-[280px] bg-card"
-                className=""
-              >
-                <div className="max-w-full">
-                  <h3 className="text-left text-balance text-lg md:text-xl font-semibold tracking-[-0.015em] text-foreground mb-4">
-                    {feature.title}
-                  </h3>
-                  <p className="text-left text-sm/6 text-muted-foreground">
-                    {feature.description}
-                  </p>
-                </div>
-              </WobbleCard>
-            ))}
+            {features.map((feature, index) => {
+              const isMiddleCard = index === middleIndex;
+              return (
+                <WobbleCard
+                  key={index}
+                  containerClassName={`col-span-1 min-h-[280px] ${isMiddleCard ? 'bg-primary' : 'bg-card'}`}
+                  className=""
+                >
+                  <div className="max-w-full">
+                    <h3 className={`text-left text-balance text-lg md:text-xl font-semibold tracking-[-0.015em] mb-4 ${isMiddleCard ? 'text-primary-foreground' : 'text-foreground'}`}>
+                      {feature.title}
+                    </h3>
+                    <p className={`text-left text-sm/6 ${isMiddleCard ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
+                      {feature.description}
+                    </p>
+                  </div>
+                </WobbleCard>
+              );
+            })}
           </div>
         </div>
       </div>
