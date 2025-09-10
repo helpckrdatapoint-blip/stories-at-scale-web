@@ -1,18 +1,17 @@
-"use client"; // Add this directive for React client components
+// src/components/Navbar.tsx
+"use client";
 
-import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Menu, X } from 'lucide-react'; // Import icons
+import { StaggeredMenu } from "@/components/ui/staggered-menu"; // Import the new component
+// Example icons for social links
+import { Github, Twitter, Linkedin } from 'lucide-react';
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-    setIsMenuOpen(false); // Close the menu on navigation
   };
 
   const navLinks = [
@@ -20,9 +19,17 @@ const Navbar = () => {
     { id: 'about', label: 'About' },
     { id: 'contact', label: 'Contact' },
   ];
+  
+  // Define social items for the staggered menu
+  const socialLinks = [
+    { Icon: Github, href: "https://github.com" },
+    { Icon: Twitter, href: "https://twitter.com" },
+    { Icon: Linkedin, href: "https://linkedin.com" },
+  ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+    // The main navbar container is now simpler
+    <nav className="fixed top-0 left-0 right-0 z-40 bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo / Site Name */}
@@ -32,7 +39,7 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation (visible on md screens and up) */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <button
@@ -51,43 +58,22 @@ const Navbar = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
-              aria-controls="mobile-menu"
-              aria-expanded={isMenuOpen}
-            >
-              <span className="sr-only">Open main menu</span>
-              {isMenuOpen ? <X className="block h-6 w-6" /> : <Menu className="block h-6 w-6" />}
-            </button>
+          {/* Mobile Staggered Menu (visible on screens smaller than md) */}
+          <div className="md:hidden">
+            <StaggeredMenu
+              items={navLinks}
+              onItemClick={scrollToSection}
+              position="right"
+              colors={["#c7d2fe", "#4f46e5"]} // Example: Indigo colors
+              displaySocials={true}
+              socialItems={socialLinks}
+              displayItemNumbering={true}
+              menuButtonColor="#111827" // Dark gray
+              openMenuButtonColor="#ffffff" // White
+            />
           </div>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden" id="mobile-menu">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium"
-              >
-                {link.label}
-              </button>
-            ))}
-            <Button
-              onClick={() => scrollToSection('contact')}
-              className="rounded-full mt-4 w-full"
-            >
-              Get Started
-            </Button>
-          </div>
-        </div>
-      )}
     </nav>
   );
 };
