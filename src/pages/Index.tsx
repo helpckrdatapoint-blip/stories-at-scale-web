@@ -7,6 +7,7 @@ import Testimonials from "@/components/Testimonials";
 import SocialProof from "@/components/SocialProof";
 import FinalCTA from "@/components/FinalCTA";
 import Contact from "@/components/Contact";
+import ChatBot from "@/components/ChatBot";
 
 const Index = () => {
   return (
@@ -28,6 +29,7 @@ const Index = () => {
       <section id="contact">
         <Contact />
       </section>
+      <ChatBot />
     </div>
   );
 };
