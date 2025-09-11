@@ -14,12 +14,20 @@ const Index = () => {
       <Navbar />
       <Hero />
       <Statement />
-      <Services />
-      <Intro />
-      <Testimonials />
+      <section id="services">
+        <Services />
+      </section>
+      <section id="about">
+        <Intro />
+      </section>
+      <section id="testimonials">
+        <Testimonials />
+      </section>
       <SocialProof />
       <FinalCTA />
-      <Contact />
+      <section id="contact">
+        <Contact />
+      </section>
     </div>
   );
 };

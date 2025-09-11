@@ -1,12 +1,23 @@
 // src/components/Navbar.tsx
 "use client";
 
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { StaggeredMenu } from "@/components/ui/staggered-menu"; // Import the new component
 // Example icons for social links
 import { Github, Twitter, Linkedin } from 'lucide-react';
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -17,6 +28,7 @@ const Navbar = () => {
   const navLinks = [
     { id: 'services', label: 'Services' },
     { id: 'about', label: 'About' },
+    { id: 'testimonials', label: 'Testimonials' },
     { id: 'contact', label: 'Contact' },
   ];
   
@@ -28,8 +40,10 @@ const Navbar = () => {
   ];
 
   return (
-    // The main navbar container is now simpler
-    <nav className="fixed top-0 left-0 right-0 z-40 bg-transparent">
+    // The main navbar container with scroll-based background
+    <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      isScrolled ? 'bg-background/95 backdrop-blur-md border-b border-border' : 'bg-transparent'
+    }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo / Site Name */}
