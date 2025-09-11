@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/button";
+import { FlipWords } from "@/components/ui/flip-words";
+import { Badge } from "@/components/ui/badge";
 
 const Hero = () => {
+  const words = ["scale", "transform", "elevate", "amplify"];
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -12,8 +16,14 @@ const Hero = () => {
     <section className="min-h-screen flex items-center justify-center pt-20">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
+          <Badge variant="secondary" className="mb-6 text-sm px-4 py-2 rounded-full">
+            ✨ Premium Storytelling Agency
+          </Badge>
+          
           <h1 className="text-5xl md:text-8xl font-bold leading-tight mb-8 animate-fade-in">
-            Stories that scale your <span className="text-blue-600">Brand</span> 
+            Stories that 
+            <FlipWords words={words} className="text-blue-600" />
+            your Brand
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
