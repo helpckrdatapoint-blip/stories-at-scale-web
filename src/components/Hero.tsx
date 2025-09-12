@@ -13,41 +13,15 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex flex-col relative bg-background">
-      {/* Fixed Navigation Bar */}
-      <div className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50">
-        <nav className="bg-foreground text-background px-8 py-3 rounded-full">
-          <div className="flex space-x-6 text-sm font-medium">
-            <button className="hover:opacity-70 transition-opacity">HOME</button>
-            <button 
-              onClick={() => scrollToSection('services')}
-              className="hover:opacity-70 transition-opacity"
-            >
-              WORK
-            </button>
-            <button 
-              onClick={() => scrollToSection('about')}
-              className="hover:opacity-70 transition-opacity"
-            >
-              ABOUT
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="hover:opacity-70 transition-opacity"
-            >
-              CONTACT
-            </button>
-          </div>
-        </nav>
-      </div>
-
-      {/* Black Transparent Button with Arrow */}
+      {/* Get Started Button */}
       <div className="absolute top-8 right-8 z-10">
         <button 
           onClick={() => scrollToSection('contact')}
-          className="bg-black/20 hover:bg-black/40 backdrop-blur-sm text-white p-4 rounded-full transition-all duration-300 group"
+          className="bg-black/20 hover:bg-black/40 backdrop-blur-sm text-white px-6 py-3 rounded-full transition-all duration-300 group flex items-center gap-2"
         >
+          <span className="text-sm font-medium">Get Started</span>
           <ArrowRight 
-            size={20} 
+            size={16} 
             className="transform group-hover:translate-x-1 transition-transform duration-300" 
           />
         </button>
@@ -70,6 +44,33 @@ const Hero = () => {
         </div>
       </div>
 
+      
+      {/* Bottom Navigation */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <nav className="bg-foreground text-background px-8 py-4 rounded-full">
+          <div className="flex space-x-8 text-sm font-medium">
+            <button className="hover:opacity-70 transition-opacity">HOME</button>
+            <button 
+              onClick={() => scrollToSection('services')}
+              className="hover:opacity-70 transition-opacity"
+            >
+              WORK
+            </button>
+            <button 
+              onClick={() => scrollToSection('about')}
+              className="hover:opacity-70 transition-opacity"
+            >
+              ABOUT
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="hover:opacity-70 transition-opacity"
+            >
+              CONTACT
+            </button>
+          </div>
+        </nav>
+      </div>
     </section>
   );
 };
