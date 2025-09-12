@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { FlipWords } from "@/components/ui/flip-words";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const Hero = () => {
   const words = ["builds,", "designs,", "creates,", "explores,"];
@@ -13,33 +13,59 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex flex-col relative bg-background">
-      {/* Let's Chat Button */}
+      {/* Tooltip Navigation */}
       <div className="absolute top-8 right-8 z-10">
-        <Button 
-          onClick={() => scrollToSection('contact')}
-          className="bg-yellow-300 hover:bg-yellow-400 text-black font-semibold px-8 py-3 rounded-full"
-        >
-          LET'S CHAT
-        </Button>
+        <TooltipProvider>
+          <div className="flex space-x-4">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button 
+                  onClick={() => scrollToSection('services')}
+                  className="w-3 h-3 rounded-full bg-foreground/20 hover:bg-foreground/40 transition-colors"
+                />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>WORK</p>
+              </TooltipContent>
+            </Tooltip>
+            
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button 
+                  onClick={() => scrollToSection('about')}
+                  className="w-3 h-3 rounded-full bg-foreground/20 hover:bg-foreground/40 transition-colors"
+                />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>ABOUT</p>
+              </TooltipContent>
+            </Tooltip>
+            
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button 
+                  onClick={() => scrollToSection('contact')}
+                  className="w-3 h-3 rounded-full bg-foreground/20 hover:bg-foreground/40 transition-colors"
+                />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>CONTACT</p>
+              </TooltipContent>
+            </Tooltip>
+          </div>
+        </TooltipProvider>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex items-center justify-start px-8 md:px-16 lg:px-24">
-        <div className="max-w-5xl">
-          <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-[0.9] text-foreground">
-            A collective<br />
-            that <FlipWords words={words} className="text-foreground" /><br />
-            and explores.
+      <div className="flex-1 flex items-center justify-center px-8 md:px-16 lg:px-24">
+        <div className="max-w-7xl text-center">
+          <h1 className="text-7xl md:text-8xl lg:text-9xl xl:text-[12rem] font-bold leading-[0.85] text-foreground">
+            <span className="block">A collective</span>
+            <span className="block">
+              that <FlipWords words={words} className="blur-sm text-muted-foreground opacity-60" />
+            </span>
+            <span className="block blur-sm text-muted-foreground opacity-60">and explores.</span>
           </h1>
-        </div>
-
-        {/* Video/Media Element */}
-        <div className="hidden lg:block absolute right-24 top-1/2 transform -translate-y-1/2">
-          <div className="w-80 h-48 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 rounded-3xl opacity-80 flex items-center justify-center">
-            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-              <div className="w-0 h-0 border-l-4 border-l-white border-y-2 border-y-transparent ml-1"></div>
-            </div>
-          </div>
         </div>
       </div>
 

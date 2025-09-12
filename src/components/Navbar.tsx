@@ -53,23 +53,9 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Desktop Navigation (visible on md screens and up) */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="text-foreground hover:text-primary transition-colors"
-              >
-                {link.label}
-              </button>
-            ))}
-            <Button
-              onClick={() => scrollToSection('contact')}
-              className="rounded-full"
-            >
-              Get Started
-            </Button>
+          {/* Simplified Desktop Navigation */}
+          <div className="hidden md:flex items-center">
+            {/* Just the logo area, no menu items */}
           </div>
 
           {/* Mobile Staggered Menu (visible on screens smaller than md) */}
