@@ -49,7 +49,7 @@ const Navbar = () => {
           {/* Logo / Site Name */}
           <div className="flex-shrink-0">
             <a href="#" className="font-bold text-xl text-foreground">
-              Stories at Scale
+              ---
             </a>
           </div>
 
