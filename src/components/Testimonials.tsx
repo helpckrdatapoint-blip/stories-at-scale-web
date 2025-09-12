@@ -56,8 +56,8 @@ export const Testimonials = () => {
           className="absolute text-black top-0 left-0"
         >
           <Card
-            testimonial={`"In the top 1% of companies I've ever worked with when it comes to people caring about project"`}
-            reviewer="Yuvan from nuvessi"
+            testimonial={`"Stories at Scale is in the top 1% of teams I've worked with. They genuinely care about the project and outcomes."`}
+            reviewer="Rishi"
             icon="https://cdn.prod.website-files.com/63dae19244d432799bf5baa4/665a014030cda3f1845a8562_image_2024-05-31_12-34-52.png"
           />
         </motion.div>
@@ -79,8 +79,8 @@ export const Testimonials = () => {
           className="absolute left-0 bottom-50"
         >
           <Card
-            testimonial={`"Unfold's done in a month and a half what we've been trying do in the last year and a half!"`}
-            reviewer="Isha from nuvessi"
+            testimonial={`"Stories at Scale delivered in weeks what we'd been trying to achieve for over a year. Game-changing quality and speed!"`}
+            reviewer="Rishi"
             icon="https://cdn.prod.website-files.com/63dae19244d432799bf5baa4/665a01571b3134a64425d44a_image_2024-05-31_12-35-12-p-500.png"
           />
         </motion.div>
@@ -102,8 +102,8 @@ export const Testimonials = () => {
           className="absolute right-10 top-0"
         >
           <Card
-            testimonial={`"When the Data Scientists are saying the UX/UI looks good... that's a BIG deal(rarely happens). 👏"`}
-            reviewer="Honey from nuvessi"
+            testimonial={`"When even our most critical stakeholders praised the UX, we knew Stories at Scale had nailed it. Exceptional work."`}
+            reviewer="Naveen"
             icon="https://cdn.prod.website-files.com/63dae19244d432799bf5baa4/665a01690c508b5bebac1311_image_2024-05-31_12-38-04-p-500.png"
           />
         </motion.div>
@@ -125,8 +125,8 @@ export const Testimonials = () => {
           className="absolute right-0"
         >
           <Card
-            testimonial={`"Huge thanks to the unfold team. Really proud of this one"`}
-            reviewer="Abhi from nuvessi"
+            testimonial={`"Huge thanks to the Stories at Scale team. Incredibly proud of what we built together."`}
+            reviewer="Rishi"
             icon="https://cdn.prod.website-files.com/63dae19244d432799bf5baa4/665a01757508c661ca1da843_image_2024-05-31_12-35-52.png"
           />
         </motion.div>
@@ -149,8 +149,8 @@ export const Testimonials = () => {
           className="absolute right-1/2 translate-1/2 bottom-0"
         >
           <Card
-            testimonial={`"Your designers bring so many mind-opemning ideas yet tangible designs to the project. I'm very impressed"`}
-            reviewer="Alex from nuvessi"
+            testimonial={`"Stories at Scale brought mind-opening ideas and turned them into tangible, effective designs. Truly impressive."`}
+            reviewer="Rishi"
             icon="https://cdn.prod.website-files.com/63dae19244d432799bf5baa4/665a018147f26450b8d1c326_image_2024-05-31_12-36-23.png"
           />
         </motion.div>
@@ -182,7 +182,7 @@ export const Testimonials = () => {
         </div>
 
         <div className="text-[25px]/6 mx-10 md:text-6xl xl:mx-0 xl:text-[99px] font-fk-display text-center xl:leading-25 max-w-5xl mt-4">
-          Our Clients Can't Say Enough About Us.
+          Clients can't say enough about Stories at Scale.
         </div>
 
         <div className="font-fk-grotesk mx-10 xl:mx-0 text-[16px]/5 xl:text-[18px] max-w-md text-center mt-5">
@@ -192,23 +192,23 @@ export const Testimonials = () => {
 
         <div className="flex flex-col xl:hidden mt-8">
           <Card
-            testimonial={`"Your designers bring so many mind-opemning ideas yet tangible designs to the project. I'm very impressed"`}
-            reviewer="Alex from nuvessi"
+            testimonial={`"Stories at Scale brought mind-opening ideas and turned them into tangible, effective designs. Truly impressive."`}
+            reviewer="Rishi"
             icon="https://cdn.prod.website-files.com/63dae19244d432799bf5baa4/665a018147f26450b8d1c326_image_2024-05-31_12-36-23.png"
           />
           <Card
-            testimonial={`"Huge thanks to the unfold team. Really proud of this one"`}
-            reviewer="Abhi from nuvessi"
+            testimonial={`"Huge thanks to the Stories at Scale team. Incredibly proud of what we built together."`}
+            reviewer="Naveen"
             icon="https://cdn.prod.website-files.com/63dae19244d432799bf5baa4/665a01757508c661ca1da843_image_2024-05-31_12-35-52.png"
           />
           <Card
-            testimonial={`"Unfold's done in a month and a half what we've been trying do in the last year and a half!"`}
-            reviewer="Isha from nuvessi"
+            testimonial={`"Stories at Scale delivered in weeks what we'd been trying to achieve for over a year. Game-changing quality and speed!"`}
+            reviewer="Rishi"
             icon="https://cdn.prod.website-files.com/63dae19244d432799bf5baa4/665a01571b3134a64425d44a_image_2024-05-31_12-35-12-p-500.png"
           />
           <Card
-            testimonial={`"Huge thanks to the unfold team. Really proud of this one"`}
-            reviewer="Abhi from nuvessi"
+            testimonial={`"Huge thanks to the Stories at Scale team. Incredibly proud of what we built together."`}
+            reviewer="Rishi"
             icon="https://cdn.prod.website-files.com/63dae19244d432799bf5baa4/665a01757508c661ca1da843_image_2024-05-31_12-35-52.png"
           />
         </div>
