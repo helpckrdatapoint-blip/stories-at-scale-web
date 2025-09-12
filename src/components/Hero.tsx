@@ -2,7 +2,7 @@ import { FlipWords } from "@/components/ui/flip-words";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const Hero = () => {
-  const words = ["builds,", "designs,", "creates,", "explores,"];
+  const words = ["scale,", "transform,", "elevate,", "amplify,"];
   
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -57,14 +57,18 @@ const Hero = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center px-8 md:px-16 lg:px-24">
-        <div className="max-w-7xl text-center">
+      <div className="flex-1 flex items-center justify-start px-8 md:px-16 lg:px-24">
+        <div className="max-w-7xl text-left">
           <h1 className="text-7xl md:text-8xl lg:text-9xl xl:text-[12rem] font-bold leading-[0.85] text-foreground">
-            <span className="block">A collective</span>
             <span className="block">
-              that <FlipWords words={words} className="blur-sm text-muted-foreground opacity-60" />
+              <span className="text-blue-600">Stories</span> that
             </span>
-            <span className="block blur-sm text-muted-foreground opacity-60">and explores.</span>
+            <span className="block">
+              <FlipWords words={words} className="text-blue-600" /> your
+            </span>
+            <span className="block">
+              <span className="text-blue-600">brand</span> and explores.
+            </span>
           </h1>
         </div>
       </div>
