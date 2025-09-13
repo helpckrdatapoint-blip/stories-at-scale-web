@@ -41,10 +41,9 @@ const Index = () => {
         displayItemNumbering={true}
         menuButtonColor="#000"
         openMenuButtonColor="#000"
-        changeMenuColorOnOpen={true}
-        colors={['#B19EEF', '#5227FF']}
-        logoUrl="---"
-        accentColor="#5227FF"
+        changeMenuColorOnOpen={false}
+        colors={['#c7d2fe', '#4f46e5']}
+        accentColor="#4f46e5"
         onMenuOpen={() => console.log('Menu opened')}
         onMenuClose={() => console.log('Menu closed')}
       />
