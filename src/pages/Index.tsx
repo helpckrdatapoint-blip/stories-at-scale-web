@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import StaggeredMenu from "@/components/ui/StaggeredMenu";
 import Hero from "@/components/Hero";
 import Statement from "@/components/Statement";
 import Services from "@/components/Services";
@@ -10,9 +10,44 @@ import Contact from "@/components/Contact";
 import ChatBot from "@/components/ChatBot";
 
 const Index = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const menuItems = [
+    { label: 'Home', ariaLabel: 'Go to home page', link: '#' },
+    { label: 'Services', ariaLabel: 'View our services', link: '#services' },
+    { label: 'About', ariaLabel: 'Learn about us', link: '#about' },
+    { label: 'Testimonials', ariaLabel: 'View testimonials', link: '#testimonials' },
+    { label: 'Contact', ariaLabel: 'Get in touch', link: '#contact' }
+  ];
+
+  const socialItems = [
+    { label: 'Twitter', link: 'https://twitter.com' },
+    { label: 'GitHub', link: 'https://github.com' },
+    { label: 'LinkedIn', link: 'https://linkedin.com' }
+  ];
+
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <StaggeredMenu
+        position="right"
+        items={menuItems}
+        socialItems={socialItems}
+        displaySocials={true}
+        displayItemNumbering={true}
+        menuButtonColor="#000"
+        openMenuButtonColor="#000"
+        changeMenuColorOnOpen={true}
+        colors={['#B19EEF', '#5227FF']}
+        logoUrl="---"
+        accentColor="#5227FF"
+        onMenuOpen={() => console.log('Menu opened')}
+        onMenuClose={() => console.log('Menu closed')}
+      />
       <Hero />
       <Statement />
       <section id="services">
