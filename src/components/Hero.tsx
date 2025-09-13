@@ -13,19 +13,6 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex flex-col relative bg-background">
-      {/* Get Started Button */}
-      <div className="absolute top-8 right-8 z-10">
-        <button 
-          onClick={() => scrollToSection('contact')}
-          className="bg-black/20 hover:bg-black/40 backdrop-blur-sm text-white px-6 py-3 rounded-full transition-all duration-300 group flex items-center gap-2"
-        >
-          <span className="text-sm font-medium">Get Started</span>
-          <ArrowRight 
-            size={16} 
-            className="transform group-hover:translate-x-1 transition-transform duration-300" 
-          />
-        </button>
-      </div>
 
       {/* Main Content */}
       <div className="flex-1 flex items-center justify-start px-8 md:px-16 lg:px-24">
