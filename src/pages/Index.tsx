@@ -8,7 +8,6 @@ import SocialProof from "@/components/SocialProof";
 import FinalCTA from "@/components/FinalCTA";
 import Contact from "@/components/Contact";
 import ChatBot from "@/components/ChatBot";
-import Footer from "@/components/Footer";
 
 const Index = () => {
   const scrollToSection = (sectionId: string) => {
@@ -65,7 +64,6 @@ const Index = () => {
         <Contact />
       </section>
       <ChatBot />
-      <Footer />
     </div>
   );
 };
