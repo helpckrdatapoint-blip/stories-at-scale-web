@@ -1,22 +1,8 @@
 import StaggeredMenu from "@/components/ui/StaggeredMenu";
-import Hero from "@/components/Hero";
-import Statement from "@/components/Statement";
-import Services from "@/components/Services";
 import Intro from "@/components/Intro";
 import Testimonials from "@/components/Testimonials";
-import SocialProof from "@/components/SocialProof";
-import FinalCTA from "@/components/FinalCTA";
-import Contact from "@/components/Contact";
-import ChatBot from "@/components/ChatBot";
 
-const Index = () => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
+const AboutPage = () => {
   const menuItems = [
     { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
     { label: 'Services', ariaLabel: 'View our services', link: '/services' },
@@ -46,25 +32,12 @@ const Index = () => {
         onMenuOpen={() => console.log('Menu opened')}
         onMenuClose={() => console.log('Menu closed')}
       />
-      <Hero />
-      <Statement />
-      <section id="services">
-        <Services />
-      </section>
-      <section id="about">
+      <div className="pt-20">
         <Intro />
-      </section>
-      <section id="testimonials">
         <Testimonials />
-      </section>
-      <SocialProof />
-      <FinalCTA />
-      <section id="contact">
-        <Contact />
-      </section>
-      <ChatBot />
+      </div>
     </div>
   );
 };
 
-export default Index;
+export default AboutPage;
