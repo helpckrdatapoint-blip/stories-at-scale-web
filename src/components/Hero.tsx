@@ -31,33 +31,6 @@ const Hero = () => {
         </div>
       </div>
 
-      
-      {/* Bottom Navigation */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <nav className="bg-foreground text-background px-8 py-4 rounded-full">
-          <div className="flex space-x-8 text-sm font-medium">
-            <button className="hover:opacity-70 transition-opacity">HOME</button>
-            <button 
-              onClick={() => scrollToSection('services')}
-              className="hover:opacity-70 transition-opacity"
-            >
-              WORK
-            </button>
-            <button 
-              onClick={() => scrollToSection('about')}
-              className="hover:opacity-70 transition-opacity"
-            >
-              ABOUT
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="hover:opacity-70 transition-opacity"
-            >
-              CONTACT
-            </button>
-          </div>
-        </nav>
-      </div>
     </section>
   );
 };
