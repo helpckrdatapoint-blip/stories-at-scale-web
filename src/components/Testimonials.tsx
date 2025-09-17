@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { useScroll, motion, useTransform } from "motion/react";
+import { useScroll, motion, useTransform, useSpring } from "framer-motion";
 
 export const Testimonials = () => {
   const ref = useRef(null);
@@ -10,40 +10,78 @@ export const Testimonials = () => {
     offset: ["start end", "end start"],
   });
 
+  // Spring configuration for a smooth, natural animation
+  const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
+
+  // Original scroll-based transformations
   const x1 = useTransform(scrollYProgress, [0, 1], [500, -100]);
   const y1 = useTransform(scrollYProgress, [0, 1], [200, -100]);
+  const r1 = useTransform(scrollYProgress, [0, 1], [-40, 60]);
 
   const x2 = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const y2 = useTransform(scrollYProgress, [0, 1], [200, -200]);
+  const r2 = useTransform(scrollYProgress, [0, 1], [-60, 10]);
 
   const x3 = useTransform(scrollYProgress, [0, 1], [300, -50]);
   const y3 = useTransform(scrollYProgress, [0, 1], [-50, 200]);
+  const r3 = useTransform(scrollYProgress, [0, 1], [-40, 40]);
 
   const y4 = useTransform(scrollYProgress, [0, 1], [50, 200]);
+  const r4 = useTransform(scrollYProgress, [0, 1], [-40, 0]);
 
   const x5 = useTransform(scrollYProgress, [0, 1], [-400, 100]);
   const y5 = useTransform(scrollYProgress, [0, 1], [250, -50]);
+  const r5 = useTransform(scrollYProgress, [0, 1], [50, -40]);
 
   const x6 = useTransform(scrollYProgress, [0, 1], [-400, 200]);
+  const r6 = useTransform(scrollYProgress, [0, 1], [20, -30]);
 
   const x7 = useTransform(scrollYProgress, [0, 1], [-400, 100]);
   const y7 = useTransform(scrollYProgress, [0, 1], [200, 200]);
+  const r7 = useTransform(scrollYProgress, [0, 1], [0, 30]);
 
   const x8 = useTransform(scrollYProgress, [0, 1], [-100, 10]);
   const y8 = useTransform(scrollYProgress, [0, 1], [100, 200]);
+  const r8 = useTransform(scrollYProgress, [0, 1], [0, 30]);
 
   const x9 = useTransform(scrollYProgress, [0, 1], [100, 200]);
   const y9 = useTransform(scrollYProgress, [0, 1], [-200, 100]);
-
-  const r1 = useTransform(scrollYProgress, [0, 1], [-40, 60]);
-  const r2 = useTransform(scrollYProgress, [0, 1], [-60, 10]);
-  const r3 = useTransform(scrollYProgress, [0, 1], [-40, 40]);
-  const r4 = useTransform(scrollYProgress, [0, 1], [-40, 0]);
-  const r5 = useTransform(scrollYProgress, [0, 1], [50, -40]);
-  const r6 = useTransform(scrollYProgress, [0, 1], [20, -30]);
-  const r7 = useTransform(scrollYProgress, [0, 1], [0, 30]);
-  const r8 = useTransform(scrollYProgress, [0, 1], [0, 30]);
   const r9 = useTransform(scrollYProgress, [0, 1], [0, -10]);
+
+  // Applying spring physics for smooth transitions
+  const smoothX1 = useSpring(x1, springConfig);
+  const smoothY1 = useSpring(y1, springConfig);
+  const smoothR1 = useSpring(r1, springConfig);
+
+  const smoothX2 = useSpring(x2, springConfig);
+  const smoothY2 = useSpring(y2, springConfig);
+  const smoothR2 = useSpring(r2, springConfig);
+
+  const smoothX3 = useSpring(x3, springConfig);
+  const smoothY3 = useSpring(y3, springConfig);
+  const smoothR3 = useSpring(r3, springConfig);
+  
+  const smoothY4 = useSpring(y4, springConfig);
+  const smoothR4 = useSpring(r4, springConfig);
+
+  const smoothX5 = useSpring(x5, springConfig);
+  const smoothY5 = useSpring(y5, springConfig);
+  const smoothR5 = useSpring(r5, springConfig);
+
+  const smoothX6 = useSpring(x6, springConfig);
+  const smoothR6 = useSpring(r6, springConfig);
+  
+  const smoothX7 = useSpring(x7, springConfig);
+  const smoothY7 = useSpring(y7, springConfig);
+  const smoothR7 = useSpring(r7, springConfig);
+
+  const smoothX8 = useSpring(x8, springConfig);
+  const smoothY8 = useSpring(y8, springConfig);
+  const smoothR8 = useSpring(r8, springConfig);
+
+  const smoothX9 = useSpring(x9, springConfig);
+  const smoothY9 = useSpring(y9, springConfig);
+  const smoothR9 = useSpring(r9, springConfig);
 
   return (
     <div
@@ -52,7 +90,7 @@ export const Testimonials = () => {
     >
       <div className="hidden xl:block">
         <motion.div
-          style={{ x: x1, y: y1, rotate: r1 }}
+          style={{ x: smoothX1, y: smoothY1, rotate: smoothR1 }}
           className="absolute text-black top-0 left-0"
         >
           <Card
@@ -63,7 +101,7 @@ export const Testimonials = () => {
         </motion.div>
 
         <motion.div
-          style={{ x: x2, y: y2, rotate: r2 }}
+          style={{ x: smoothX2, y: smoothY2, rotate: smoothR2 }}
           className="absolute text-black  top-70 left-10"
         >
           <img
@@ -75,7 +113,7 @@ export const Testimonials = () => {
         </motion.div>
 
         <motion.div
-          style={{ x: x3, y: y3, rotate: r3 }}
+          style={{ x: smoothX3, y: smoothY3, rotate: smoothR3 }}
           className="absolute left-0 bottom-50"
         >
           <Card
@@ -86,7 +124,7 @@ export const Testimonials = () => {
         </motion.div>
 
         <motion.div
-          style={{ y: y4, rotate: r4 }}
+          style={{ y: smoothY4, rotate: smoothR4 }}
           className="absolute left-20 bottom-0"
         >
           <img
@@ -98,7 +136,7 @@ export const Testimonials = () => {
         </motion.div>
 
         <motion.div
-          style={{ x: x5, y: y5, rotate: r5 }}
+          style={{ x: smoothX5, y: smoothY5, rotate: smoothR5 }}
           className="absolute right-10 top-0"
         >
           <Card
@@ -109,7 +147,7 @@ export const Testimonials = () => {
         </motion.div>
 
         <motion.div
-          style={{ x: x6, rotate: r6 }}
+          style={{ x: smoothX6, rotate: smoothR6 }}
           className="absolute right-20 top-80"
         >
           <img
@@ -121,7 +159,7 @@ export const Testimonials = () => {
         </motion.div>
 
         <motion.div
-          style={{ x: x7, y: y7, rotate: r7 }}
+          style={{ x: smoothX7, y: smoothY7, rotate: smoothR7 }}
           className="absolute right-0"
         >
           <Card
@@ -132,7 +170,7 @@ export const Testimonials = () => {
         </motion.div>
 
         <motion.div
-          style={{ x: x8, y: y8, rotate: r8 }}
+          style={{ x: smoothX8, y: smoothY8, rotate: smoothR8 }}
           className="absolute right-50 bottom-30"
         >
           <img
@@ -145,7 +183,7 @@ export const Testimonials = () => {
         </motion.div>
 
         <motion.div
-          style={{ x: x9, y: y9, rotate: r9 }}
+          style={{ x: smoothX9, y: smoothY9, rotate: smoothR9 }}
           className="absolute right-1/2 translate-1/2 bottom-0"
         >
           <Card
@@ -157,8 +195,8 @@ export const Testimonials = () => {
       </div>
 
       <div className="flex flex-col items-center ">
-        <div className="gap-x-2 px-5 py-2 bg-white rounded-full flex items-center">
-          <span className="text-[14px] xl:text-[16px] font-fk-grotesk">
+        <div className="gap-x-2 px-5 py-2 bg-white rounded-full flex items-center shadow-lg">
+          <span className="text-sm xl:text-base font-medium">
             several people are typing
           </span>
           <div className="flex space-x-1">
@@ -181,16 +219,16 @@ export const Testimonials = () => {
           </div>
         </div>
 
-        <div className="text-[25px]/6 mx-10 md:text-6xl xl:mx-0 xl:text-[99px] font-fk-display text-center xl:leading-25 max-w-5xl mt-4">
+        <div className="text-2xl leading-tight mx-10 md:text-6xl xl:mx-0 xl:text-7xl font-bold text-center xl:leading-tight max-w-5xl mt-4">
           Clients can't say enough about Stories at Scale.
         </div>
 
-        <div className="font-fk-grotesk mx-10 xl:mx-0 text-[16px]/5 xl:text-[18px] max-w-md text-center mt-5">
+        <div className="font-medium mx-10 xl:mx-0 text-base xl:text-lg max-w-md text-center mt-5 text-gray-600">
           Take a look for yourself. No Slack messages were harmed in the making
           of this component.
         </div>
 
-        <div className="flex flex-col xl:hidden mt-8">
+        <div className="flex flex-col xl:hidden mt-8 w-full">
           <Card
             testimonial={`"Stories at Scale brought mind-opening ideas and turned them into tangible, effective designs. Truly impressive."`}
             reviewer="Rishi"
@@ -227,19 +265,19 @@ const Card = ({
   reviewer: string;
 }) => {
   return (
-    <div className="flex flex-col gap-y-5 xl:gap-y-2 mx-5 my-2 md:mx-10 md:my-3 rounded-lg xl:rounded-4xl bg-white text-black font-fk-grotesk px-4 py-3 xl:px-10 xl:py-8 xl:max-w-xl md:max-w-full md:p-8">
-      <div className="font-fk-grotesk text-[16px] xl:text-xl xl:font-semibold">
+    <div className="flex flex-col gap-y-4 xl:gap-y-3 mx-5 my-2 md:mx-10 md:my-3 rounded-2xl xl:rounded-3xl bg-white text-black px-6 py-5 xl:px-8 xl:py-6 xl:max-w-md md:max-w-full shadow-md">
+      <div className="font-medium text-base xl:text-lg">
         {testimonial}
       </div>
-      <div className="flex flex-col  xl:flex-row xl:items-center gap-x-2">
+      <div className="flex items-center gap-x-3">
         <img
           src={icon}
-          alt="image"
-          width={20}
-          height={20}
+          alt="Reviewer icon"
+          width={32}
+          height={32}
           className="rounded-full"
         />
-        <div className="text-sm">{reviewer}</div>
+        <div className="text-sm font-semibold">{reviewer}</div>
       </div>
     </div>
   );
