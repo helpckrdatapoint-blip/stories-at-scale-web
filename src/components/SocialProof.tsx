@@ -30,7 +30,7 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-r from-secondary/30 via-background to-secondary/30 relative overflow-hidden">
+    <section className="py-20 bg-gray-100 dark:bg-gray-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5" />
       <div className="absolute top-0 left-1/4 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
