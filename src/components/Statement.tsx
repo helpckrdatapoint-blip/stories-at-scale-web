@@ -1,56 +1,70 @@
-import { WobbleCard } from "@/components/ui/wobble-card";
+import React from 'react';
 
 const Statement = () => {
   const features = [
     {
       title: "Strategic Storytelling",
-      description: "Narratives that resonate and drive engagement across every touchpoint."
+      description: "Narratives that resonate and drive engagement across every touchpoint.",
     },
     {
-      title: "Content Excellence", 
-      description: "Compelling content that captures attention, builds trust, and converts."
+      title: "Content Excellence",
+      description: "Compelling content that captures attention, builds trust, and converts.",
     },
     {
       title: "Creative Innovation",
-      description: "Distinct, memorable experiences that set you apart and stick."
+      description: "Distinct, memorable experiences that set you apart and stick.",
     }
   ];
 
-  // Calculate the middle index to apply special styling
   const middleIndex = Math.floor(features.length / 2);
 
   return (
-    <section className="py-20 bg-secondary">
+    <section className="py-24 bg-secondary">
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-4xl mb-10">
-            <p className="text-blue-700 text-sm font-medium mb-2">What we stand for</p>
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+          {/* Header section updated for left alignment */}
+          <div className="max-w-4xl mb-16">
+            <p className="text-blue-600 text-base font-semibold mb-3">What we stand for</p>
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight">
               Make stories that stick.
             </h2>
-            <p className="mt-3 text-base md:text-lg text-muted-foreground max-w-2xl">
+            <p className="mt-5 text-lg md:text-xl text-muted-foreground max-w-3xl">
               Clear strategy, strong creative, and consistent execution — that’s how stories scale.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
             {features.map((feature, index) => {
               const isMiddleCard = index === middleIndex;
               return (
-                <WobbleCard
+                <div
                   key={index}
-                  containerClassName={`col-span-1 min-h-[260px] border ${isMiddleCard ? 'bg-primary border-transparent' : 'bg-card border-border'}`}
-                  className=""
+                  className={`
+                    col-span-1 rounded-2xl border relative overflow-hidden
+                    transition-all duration-300 ease-in-out flex flex-col
+                    hover:shadow-2xl hover:-translate-y-2 group
+                    ${isMiddleCard ? 'bg-primary border-transparent text-primary-foreground' : 'bg-card border-border'}
+                  `}
                 >
-                  <div className="max-w-full">
-                    <h3 className={`text-left text-balance text-xl md:text-2xl font-semibold tracking-[-0.015em] mb-2 ${isMiddleCard ? 'text-primary-foreground' : 'text-foreground'}`}>
-                      {feature.title}
-                    </h3>
-                    <p className={`text-left text-base md:text-lg ${isMiddleCard ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
-                      {feature.description}
-                    </p>
+                  <div className="p-8 flex-grow flex flex-col justify-between">
+                    {/* Top Section with Number */}
+                    <div className="flex justify-between items-start mb-12">
+                      <span className={`text-5xl font-bold transition-colors duration-300 ease-in-out ${isMiddleCard ? 'text-primary-foreground/80' : 'text-foreground/90'}`}>
+                        0{index + 1}
+                      </span>
+                    </div>
+
+                    {/* Bottom Section with Content */}
+                    <div>
+                      <h3 className={`text-left text-balance text-2xl font-bold tracking-tight mb-3 ${isMiddleCard ? 'text-primary-foreground' : 'text-foreground'}`}>
+                        {feature.title}
+                      </h3>
+                      <p className={`text-left text-base leading-relaxed ${isMiddleCard ? 'text-primary-foreground/80' : 'text-muted-foreground'}`}>
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
-                </WobbleCard>
+                </div>
               );
             })}
           </div>
@@ -61,4 +75,3 @@ const Statement = () => {
 };
 
 export default Statement;
-
