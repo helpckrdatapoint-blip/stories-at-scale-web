@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MessageCircle, X, Send } from 'lucide-react';
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface Message {
   id: string;
@@ -34,10 +35,12 @@ const ChatBot = () => {
   };
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+    if (isOpen) {
+      scrollToBottom();
+    }
+  }, [messages, isOpen]);
 
-  const predefinedResponses = {
+    const predefinedResponses = {
     greeting: [
       "Hello! Welcome to Stories at Scale. How can I help you today?",
       "Hi there! I'm here to answer any questions about our storytelling services.",
@@ -95,6 +98,7 @@ const ChatBot = () => {
     return "Thank you for your question! For specific inquiries about our storytelling services, I'd recommend scheduling a consultation where our team can provide detailed answers tailored to your needs. You can get started by clicking the 'Get Started' button on our website.";
   };
 
+
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
 
@@ -109,7 +113,6 @@ const ChatBot = () => {
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate typing delay
     setTimeout(() => {
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
@@ -130,6 +133,35 @@ const ChatBot = () => {
     }
   };
 
+  // macOS-like spring animation variants
+  const chatWindowVariants = {
+    initial: {
+      opacity: 0,
+      scale: 0.5,
+      y: 20,
+    },
+    animate: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 300,
+        damping: 30,
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.5,
+      y: 20,
+      transition: {
+        type: 'spring',
+        stiffness: 300,
+        damping: 30,
+      },
+    },
+  };
+
   return (
     <>
       {/* Chat Button */}
@@ -137,92 +169,114 @@ const ChatBot = () => {
         <Button
           onClick={() => setIsOpen(!isOpen)}
           className="rounded-full w-16 h-16 shadow-lg hover:shadow-xl transition-all duration-300"
-          size="sm"
+          size="icon"
+          aria-label="Toggle Chat"
         >
-          {isOpen ? <X className="w-7 h-7" /> : <MessageCircle className="w-7 h-7" />}
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={isOpen ? 'x' : 'message'}
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              {isOpen ? <X className="w-7 h-7" /> : <MessageCircle className="w-7 h-7" />}
+            </motion.div>
+          </AnimatePresence>
         </Button>
       </div>
 
       {/* Chat Window */}
-      {isOpen && (
-        <Card className="fixed bottom-24 right-6 w-96 h-[500px] z-50 shadow-2xl border-border bg-background">
-          {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-border bg-primary text-primary-foreground rounded-t-lg">
-            <div>
-              <h3 className="font-semibold">Stories at Scale</h3>
-              <p className="text-sm opacity-90">Ask us anything!</p>
-            </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsOpen(false)}
-              className="text-primary-foreground hover:bg-primary/20"
-            >
-              <X className="w-4 h-4" />
-            </Button>
-          </div>
-
-          {/* Messages */}
-          <ScrollArea className="flex-1 p-4 h-[360px]">
-            <div className="space-y-4">
-              {messages.map((message) => (
-                <div
-                  key={message.id}
-                  className={cn(
-                    "flex",
-                    message.isUser ? "justify-end" : "justify-start"
-                  )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            variants={chatWindowVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="fixed bottom-24 right-6 w-[440px] h-[630px] z-50 origin-bottom-right"
+          >
+            <Card className="h-full w-full flex flex-col shadow-2xl border-border bg-background">
+              {/* Header */}
+              <div className="flex items-center justify-between p-4 border-b border-border bg-primary text-primary-foreground rounded-t-lg">
+                <div>
+                  <h3 className="font-semibold text-lg">Stories at Scale</h3>
+                  <p className="text-sm opacity-90">We're here to help!</p>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsOpen(false)}
+                  className="text-primary-foreground hover:bg-primary/80 rounded-full"
                 >
-                  <div
-                    className={cn(
-                      "max-w-[80%] rounded-lg px-3 py-2 text-sm",
-                      message.isUser
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-muted-foreground"
-                    )}
-                  >
-                    {message.text}
-                  </div>
-                </div>
-              ))}
-              
-              {isTyping && (
-                <div className="flex justify-start">
-                  <div className="bg-muted text-muted-foreground max-w-[80%] rounded-lg px-3 py-2 text-sm">
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                      <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                      <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-                    </div>
-                  </div>
-                </div>
-              )}
-              <div ref={messagesEndRef} />
-            </div>
-          </ScrollArea>
+                  <X className="w-5 h-5" />
+                </Button>
+              </div>
 
-          {/* Input */}
-          <div className="p-4 border-t border-border">
-            <div className="flex space-x-2">
-              <Input
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Type your message..."
-                className="flex-1"
-                disabled={isTyping}
-              />
-              <Button
-                onClick={handleSendMessage}
-                disabled={!inputValue.trim() || isTyping}
-                size="sm"
-              >
-                <Send className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
-        </Card>
-      )}
+              {/* Messages */}
+              <ScrollArea className="flex-1 p-4 bg-background/90">
+                <div className="space-y-4">
+                  {messages.map((message) => (
+                    <div
+                      key={message.id}
+                      className={cn(
+                        "flex",
+                        message.isUser ? "justify-end" : "justify-start"
+                      )}
+                    >
+                      <div
+                        className={cn(
+                          "max-w-[85%] rounded-lg px-4 py-2 text-base",
+                          message.isUser
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-muted"
+                        )}
+                      >
+                        {message.text}
+                      </div>
+                    </div>
+                  ))}
+                  
+                  {isTyping && (
+                    <div className="flex justify-start">
+                      <div className="bg-muted max-w-[85%] rounded-lg px-4 py-2 text-base">
+                        <div className="flex space-x-1">
+                          <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                          <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                          <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  <div ref={messagesEndRef} />
+                </div>
+              </ScrollArea>
+
+              {/* Input */}
+              <div className="p-4 border-t border-border bg-background/90 rounded-b-lg">
+                <div className="flex space-x-2">
+                  <Input
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    placeholder="Type your message..."
+                    className="flex-1 h-12 text-base"
+                    disabled={isTyping}
+                  />
+                  <Button
+                    onClick={handleSendMessage}
+                    disabled={!inputValue.trim() || isTyping}
+                    size="icon"
+                    className="h-12 w-12"
+                  >
+                    <Send className="w-5 h-5" />
+                  </Button>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
