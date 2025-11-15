@@ -1,6 +1,7 @@
 import { FlipWords } from "@/components/ui/flip-words";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import CircularGallery from "@/components/ui/CircularGallery";
 
 const Hero = () => {
   const words = ["scale,", "elevate,", "amplify,"];
@@ -13,7 +14,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-[80vh] flex flex-col justify-center relative bg-background">
+    <section className="min-h-screen flex flex-col justify-center relative bg-background overflow-hidden">
       {/* Decorative background accents */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         {/* Gradient glow */}
@@ -32,7 +33,8 @@ const Hero = () => {
         {/* Soft ring behind heading */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[42rem] h-[42rem] rounded-full ring-1 ring-blue-300/40" />
       </div>
-      <div className="flex-1 flex items-center justify-center px-6 md:px-12 lg:px-20">
+      
+      <div className="flex-1 flex items-center justify-center px-6 md:px-12 lg:px-20 relative z-10">
         <div className="max-w-5xl text-center">
           <button
             onClick={() => scrollToSection("contact")}
@@ -50,16 +52,25 @@ const Hero = () => {
           <p className="mt-4 md:mt-6 text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
             Strategy-led content and creative production designed to grow awareness, trust, and conversions.
           </p>
-          <div className="mt-6 md:mt-8 flex items-center justify-center gap-3">
+          <div className="mt-6 md:mt-8 flex items-center justify-center gap-3 mb-12">
             <Button size="lg" onClick={() => scrollToSection("services")}>
               Explore services
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button variant="outline" size="lg" onClick={() => scrollToSection("contact")}>Get in touch</Button>
           </div>
-
-          
         </div>
+      </div>
+
+      {/* Circular Gallery Section */}
+      <div className="relative w-full h-[600px] mb-12">
+        <CircularGallery 
+          bend={3} 
+          textColor="#64748b" 
+          borderRadius={0.08} 
+          scrollEase={0.05}
+          scrollSpeed={2}
+        />
       </div>
     </section>
   );
