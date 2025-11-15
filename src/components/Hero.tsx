@@ -14,7 +14,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center relative bg-background overflow-hidden">
+    <section className="min-h-screen flex flex-col relative bg-background overflow-hidden pt-24 md:pt-32">
       {/* Decorative background accents */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         {/* Gradient glow */}
@@ -31,39 +31,39 @@ const Hero = () => {
         <div className="absolute top-1/4 -left-10 w-40 h-80 rounded-r-full bg-blue-600/70 ring-2 ring-blue-700/40" />
 
         {/* Soft ring behind heading */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[42rem] h-[42rem] rounded-full ring-1 ring-blue-300/40" />
+        <div className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[42rem] h-[42rem] rounded-full ring-1 ring-blue-300/40" />
       </div>
       
-      <div className="flex-1 flex items-center justify-center px-6 md:px-12 lg:px-20 relative z-10">
-        <div className="max-w-5xl text-center">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 relative z-10 mb-8 md:mb-12">
+        <div className="max-w-4xl mx-auto text-center">
           <button
             onClick={() => scrollToSection("contact")}
-            className="inline-flex items-center gap-2 rounded-full border border-blue-600/30 bg-blue-600/10 text-blue-700 px-3 py-1 text-xs md:text-sm font-medium mb-4 hover:bg-blue-600/15 hover:border-blue-600/50 transition-colors"
+            className="inline-flex items-center gap-2 rounded-full border border-blue-600/30 bg-blue-600/10 text-blue-700 px-2.5 py-1 text-xs font-medium mb-3 md:mb-4 hover:bg-blue-600/15 hover:border-blue-600/50 transition-colors"
             aria-label="Scale your story - contact us"
           >
             <span>Scale your story</span>
           </button>
-          <h1 className="text-4xl md:text-5xl lg:text-5xl font-extrabold leading-tight text-foreground">
-            <span className="block">
-              We craft <span className="relative text-blue-600 after:absolute after:left-0 after:-bottom-1 after:h-[6px] after:w-full after:bg-blue-200/60 after:rounded-full">stories</span> that <FlipWords words={words} className="text-blue-600 text-4xl md:text-5xl lg:text-5xl" /> your reach
+          <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-foreground px-2">
+            <span className="block mb-2">
+              We craft <span className="relative text-blue-600 after:absolute after:left-0 after:-bottom-1 after:h-[4px] md:after:h-[5px] after:w-full after:bg-blue-200/60 after:rounded-full">stories</span> that <FlipWords words={words} className="text-blue-600 text-3xl sm:text-4xl md:text-4xl lg:text-5xl" /> your reach
             </span>
-            <span className="block">Launch faster. Convert better.</span>
+            <span className="block text-2xl sm:text-3xl md:text-3xl lg:text-4xl mt-1">Launch faster. Convert better.</span>
           </h1>
-          <p className="mt-4 md:mt-6 text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+          <p className="mt-3 md:mt-5 text-muted-foreground text-sm sm:text-base md:text-base lg:text-lg max-w-2xl mx-auto px-4">
             Strategy-led content and creative production designed to grow awareness, trust, and conversions.
           </p>
-          <div className="mt-6 md:mt-8 flex items-center justify-center gap-3 mb-12">
-            <Button size="lg" onClick={() => scrollToSection("services")}>
+          <div className="mt-5 md:mt-7 flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 md:mb-12 px-4">
+            <Button size="lg" onClick={() => scrollToSection("services")} className="w-full sm:w-auto">
               Explore services
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button variant="outline" size="lg" onClick={() => scrollToSection("contact")}>Get in touch</Button>
+            <Button variant="outline" size="lg" onClick={() => scrollToSection("contact")} className="w-full sm:w-auto">Get in touch</Button>
           </div>
         </div>
       </div>
 
       {/* Circular Gallery Section */}
-      <div className="relative w-full h-[600px] mb-12">
+      <div className="relative w-full h-[400px] sm:h-[500px] md:h-[550px] lg:h-[600px] mb-8 md:mb-12">
         <CircularGallery 
           bend={3} 
           textColor="#64748b" 
