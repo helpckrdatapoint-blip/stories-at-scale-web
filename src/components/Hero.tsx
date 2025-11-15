@@ -45,7 +45,7 @@ const Hero = () => {
           </button>
           <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-foreground px-2">
             <span className="block mb-2">
-              We craft <span className="relative text-blue-600 after:absolute after:left-0 after:-bottom-1 after:h-[4px] md:after:h-[5px] after:w-full after:bg-blue-200/60 after:rounded-full">stories</span> that <FlipWords words={words} className="text-blue-600 text-3xl sm:text-4xl md:text-4xl lg:text-5xl" /> your reach
+              We craft <span className="relative text-blue-600 after:absolute after:left-0 after:-bottom-1 after:h-[4px] md:after:h-[5px] after:w-full after:bg-blue-200/60 after:rounded-full">stories</span> that <FlipWords words={words} className="text-blue-600 text-3xl sm:text-4xl md:text-4xl lg:text-5xl" />Brand
             </span>
             <span className="block text-2xl sm:text-3xl md:text-3xl lg:text-4xl mt-1">Launch faster. Convert better.</span>
           </h1>
