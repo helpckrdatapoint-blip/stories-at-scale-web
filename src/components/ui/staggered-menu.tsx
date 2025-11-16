@@ -9,6 +9,7 @@ import { Menu, X } from 'lucide-react';
 type StaggeredMenuItem = {
   id: string;
   label: string;
+  link?: string;
 };
 
 type StaggeredMenuSocialItem = {
@@ -19,7 +20,7 @@ type StaggeredMenuSocialItem = {
 type StaggeredMenuProps = {
   items: StaggeredMenuItem[];
   socialItems?: StaggeredMenuSocialItem[];
-  onItemClick: (id: string) => void;
+  onItemClick?: (id: string) => void;
   position?: 'left' | 'right';
   colors?: string[];
   displaySocials?: boolean;
@@ -115,18 +116,31 @@ export const StaggeredMenu = ({
             >
               {items.map((item, i) => (
                 <motion.li key={item.id} variants={menuItemVariants} className="mb-8">
-                  <button
-                    onClick={() => {
-                      onItemClick(item.id);
-                      setIsOpen(false);
-                    }}
-                    className="flex items-center text-4xl md:text-6xl font-bold text-white hover:text-gray-300 transition-colors"
-                  >
-                    {displayItemNumbering && (
-                      <span className="text-2xl font-normal mr-4 opacity-50">0{i + 1}</span>
-                    )}
-                    {item.label}
-                  </button>
+                  {item.link ? (
+                    <a
+                      href={item.link}
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center text-4xl md:text-6xl font-bold text-white hover:text-gray-300 transition-colors"
+                    >
+                      {displayItemNumbering && (
+                        <span className="text-2xl font-normal mr-4 opacity-50">0{i + 1}</span>
+                      )}
+                      {item.label}
+                    </a>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        onItemClick?.(item.id);
+                        setIsOpen(false);
+                      }}
+                      className="flex items-center text-4xl md:text-6xl font-bold text-white hover:text-gray-300 transition-colors"
+                    >
+                      {displayItemNumbering && (
+                        <span className="text-2xl font-normal mr-4 opacity-50">0{i + 1}</span>
+                      )}
+                      {item.label}
+                    </button>
+                  )}
                 </motion.li>
               ))}
             </motion.ul>
