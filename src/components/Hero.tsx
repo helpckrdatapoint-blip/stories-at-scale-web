@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import CircularGallery from "@/components/ui/CircularGallery";
 
 const Hero = () => {
-  const words = ["scale," "boost,"];
+  const words = ["scale,", "elevate,", "amplify,", "transform,", "boost,"];
   
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
