@@ -35,23 +35,17 @@ const Hero = () => {
       </div>
       
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 relative z-10 mb-8 md:mb-12">
-        {/* Centered Navigation Bar */}
-        <nav className="flex justify-center mb-8 md:mb-12">
-          <div className="bg-background/80 backdrop-blur-sm rounded-full px-6 py-3 border border-border/50 shadow-lg">
-            <button 
-              onClick={() => scrollToSection("contact")}
-              className="px-6 py-2 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-medium"
-              aria-label="Book Now - contact us"
-            >
-              Book Now
-            </button>
-          </div>
-        </nav>
-
         <div className="max-w-4xl mx-auto text-center">
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="inline-flex items-center gap-2 rounded-full border border-blue-600/30 bg-blue-600/10 text-blue-700 px-2.5 py-1 text-xs font-medium mb-3 md:mb-4 hover:bg-blue-600/15 hover:border-blue-600/50 transition-colors"
+            aria-label="Scale your story - contact us"
+          >
+            <span>Scale your story</span>
+          </button>
           <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-foreground px-2">
             <span className="block mb-2">
-              We craft <span className="relative text-blue-600 after:absolute after:left-0 after:-bottom-1 after:h-[4px] md:after:h-[5px] after:w-full after:bg-blue-200/60 after:rounded-full">stories</span> that <FlipWords words={words} className="text-blue-600 text-3xl sm:text-4xl md:text-4xl lg:text-5xl" />Brand
+              We craft <span className="relative text-blue-600 after:absolute after:left-0 after:-bottom-1 after:h-[4px] md:after:h-[5px] after:w-full after:bg-blue-200/60 after:rounded-full">stories</span> that <FlipWords words={words} className="text-blue-600 text-3xl sm:text-4xl md:text-4xl lg:text-5xl" /> your reach
             </span>
             <span className="block text-2xl sm:text-3xl md:text-3xl lg:text-4xl mt-1">Launch faster. Convert better.</span>
           </h1>
