@@ -39,18 +39,18 @@ const Hero = () => {
           <button
             onClick={() => scrollToSection("contact")}
             className="inline-flex items-center gap-2 rounded-full border border-blue-600/30 bg-blue-600/10 text-blue-700 px-2.5 py-1 text-xs font-medium mb-3 md:mb-4 hover:bg-blue-600/15 hover:border-blue-600/50 transition-colors"
-            aria-label="Scale your story - contact us"
+            aria-label="Instagram Reels with Dhasha Media"
           >
-            <span>Scale your story</span>
+            <span>Instagram Reels • Dhasha Media</span>
           </button>
           <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-foreground px-2">
             <span className="block mb-2">
-              We craft <span className="relative text-blue-600 after:absolute after:left-0 after:-bottom-1 after:h-[4px] md:after:h-[5px] after:w-full after:bg-blue-200/60 after:rounded-full">stories</span> that <FlipWords words={words} className="text-blue-600 text-3xl sm:text-4xl md:text-4xl lg:text-5xl" /> your reach
+              Dhasha Media crafts <span className="relative text-blue-600 after:absolute after:left-0 after:-bottom-1 after:h-[4px] md:after:h-[5px] after:w-full after:bg-blue-200/60 after:rounded-full">reels</span> that <FlipWords words={words} className="text-blue-600 text-3xl sm:text-4xl md:text-4xl lg:text-5xl" /> your reach
             </span>
-            <span className="block text-2xl sm:text-3xl md:text-3xl lg:text-4xl mt-1">Launch faster. Convert better.</span>
+            <span className="block text-2xl sm:text-3xl md:text-3xl lg:text-4xl mt-1">Viral reels. Real results.</span>
           </h1>
           <p className="mt-3 md:mt-5 text-muted-foreground text-sm sm:text-base md:text-base lg:text-lg max-w-2xl mx-auto px-4">
-            Strategy-led content and creative production designed to grow awareness, trust, and conversions.
+            Expert Instagram Reels production and strategy to boost your brand visibility and engagement.
           </p>
           <div className="mt-5 md:mt-7 flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 md:mb-12 px-4">
             <Button size="lg" onClick={() => scrollToSection("services")} className="w-full sm:w-auto">
