@@ -1,7 +1,7 @@
 import StaggeredMenu from "@/components/ui/StaggeredMenu";
 import Hero from "@/components/Hero";
 import Statement from "@/components/Statement";
-import Services from "@/components/Services";
+import Featured from "@/components/Featured";
 import Intro from "@/components/Intro";
 import Testimonials from "@/components/Testimonials";
 import SocialProof from "@/components/SocialProof";
@@ -48,9 +48,7 @@ const Index = () => {
       />
       <Hero />
       <Statement />
-      <section id="services">
-        <Services />
-      </section>
+      <Featured />
       <section id="about">
         <Intro />
       </section>
