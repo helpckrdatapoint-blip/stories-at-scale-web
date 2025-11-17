@@ -70,12 +70,12 @@ const ParallaxGallery = () => {
 
   return (
     <div className="w-full bg-background">
-      <div className="flex h-[40vh] items-center justify-center">
-        <div className="grid content-start justify-items-center gap-6 text-center">
-          <h2 className="text-4xl font-bold text-foreground md:text-5xl">
+      <div className="flex h-[20vh] items-center justify-center py-8">
+        <div className="grid content-start justify-items-center gap-4 text-center">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">
             Featured Work
           </h2>
-          <p className="max-w-2xl text-lg text-muted-foreground">
+          <p className="max-w-2xl text-base text-muted-foreground">
             Scroll down to explore our stunning Instagram Reels production showcase
           </p>
         </div>
@@ -91,9 +91,9 @@ const ParallaxGallery = () => {
         <Column images={[images[9], images[10], images[11]]} y={y4} />
       </div>
 
-      <div className="flex h-[40vh] items-center justify-center">
-        <div className="grid content-start justify-items-center gap-6 text-center">
-          <p className="max-w-2xl text-lg text-muted-foreground">
+      <div className="flex h-[20vh] items-center justify-center py-8">
+        <div className="grid content-start justify-items-center gap-4 text-center">
+          <p className="max-w-2xl text-base text-muted-foreground">
             Ready to create viral content that stands out?
           </p>
         </div>
