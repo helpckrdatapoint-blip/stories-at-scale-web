@@ -1,88 +1,79 @@
-import React from 'react';
-import { Zap, FileVideo, Award, RefreshCw, DollarSign, Cloud } from 'lucide-react';
+import certifiedCreator from "@/assets/features/certified-creator.jpg";
+import easyBooking from "@/assets/features/easy-booking.jpg";
+import pricing from "@/assets/features/pricing.jpg";
+import secure from "@/assets/features/secure.jpg";
+import instantDelivery from "@/assets/features/instant-delivery.jpg";
+import womenSafety from "@/assets/features/women-safety.jpg";
 
 const Statement = () => {
   const features = [
     {
-      icon: Zap,
-      title: "Instant Delivery & Outputs",
-      description: "Reels are shot, edited, and delivered on-site - before the event ends.",
+      title: "Trained & Certified Reel Makers",
+      description: "Each Partner clears 6 filters to get their certification",
+      image: certifiedCreator,
     },
     {
-      icon: FileVideo,
-      title: "Raw Footage Included",
-      description: "Full transparency - clients receive both final edits and original raw files.",
+      title: "Easy Booking",
+      description: "Stop struggling with complex booking procedure",
+      image: easyBooking,
     },
     {
-      icon: Award,
-      title: "Skilled & Certified Creators",
-      description: "Every Reel Maker passes 4-6 quality checks before going live.",
+      title: "Unbelievable Pricing",
+      description: "Each Reel starts ₹1999/-",
+      image: pricing,
     },
     {
-      icon: RefreshCw,
-      title: "Up to 2 Revisions Per Reel",
-      description: "Flexible and collaborative - we offer multiple edits to ensure client satisfaction.",
+      title: "Safe & Secure",
+      description: "You & Your data is safe and secured.",
+      image: secure,
     },
     {
-      icon: DollarSign,
-      title: "Affordable, Transparent Pricing",
-      description: "Reels starting at just ₹1999 - no surprises, no extra fees.",
+      title: "Instant Reels, Instant Editing",
+      description: "No hidden charges! Clients get upfront pricing, secure payment options, and a seamless checkout experience.",
+      image: instantDelivery,
     },
     {
-      icon: Cloud,
-      title: "Secure Cloud Storage",
-      description: "All content is safely stored and backed up on encrypted cloud servers.",
-    }
+      title: "Women Safety",
+      description: "A women can book a female Reel maker",
+      image: womenSafety,
+    },
   ];
 
   return (
-    <section className="py-24 bg-secondary">
-      <div className="container mx-auto px-6">
-        <div className="max-w-7xl mx-auto">
-          {/* Header section updated for left alignment */}
-          <div className="max-w-4xl mb-16">
-            <p className="text-blue-600 text-base font-semibold mb-3">What we stand for</p>
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight">
-              Make stories that stick.
-            </h2>
-            <p className="mt-5 text-lg md:text-xl text-muted-foreground max-w-3xl">
-              Clear strategy, strong creative, and consistent execution — that’s how stories scale.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-            {features.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <div
-                  key={index}
-                  className="col-span-1 rounded-2xl border relative overflow-hidden bg-card border-border
-                    transition-all duration-500 ease-in-out flex flex-col
-                    hover:shadow-2xl hover:-translate-y-2 hover:bg-primary hover:border-primary group"
-                >
-                  <div className="p-8 flex-grow flex flex-col justify-between">
-                    {/* Top Section with Number and Icon */}
-                    <div className="flex justify-between items-start mb-12">
-                      <span className="text-5xl font-bold transition-colors duration-500 ease-in-out text-foreground/90 group-hover:text-primary-foreground/80">
-                        0{index + 1}
-                      </span>
-                      <Icon className="w-10 h-10 text-primary transition-colors duration-500 ease-in-out group-hover:text-primary-foreground" strokeWidth={1.5} />
-                    </div>
-
-                    {/* Bottom Section with Content */}
-                    <div>
-                      <h3 className="text-left text-balance text-2xl font-bold tracking-tight mb-3 text-foreground transition-colors duration-500 ease-in-out group-hover:text-primary-foreground">
-                        {feature.title}
-                      </h3>
-                      <p className="text-left text-base leading-relaxed text-muted-foreground transition-colors duration-500 ease-in-out group-hover:text-primary-foreground/80">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </div>
+    <section className="py-20 px-4 bg-gradient-to-b from-blue-950 to-blue-900">
+      <div className="container mx-auto max-w-7xl">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            <span className="text-white">Not Just Instant </span>
+            <span className="text-blue-400">Delivery, But..</span>
+          </h2>
+        </div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-900/40 to-blue-950/60 backdrop-blur-sm border border-blue-800/30 hover:border-blue-600/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20"
+            >
+              <div className="flex items-center gap-6 p-6 md:p-8">
+                <div className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden">
+                  <img
+                    src={feature.image}
+                    alt={feature.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                 </div>
-              );
-            })}
-          </div>
+                <div className="flex-1">
+                  <h3 className="text-xl md:text-2xl font-semibold mb-3 text-white group-hover:text-blue-300 transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-blue-200/80 group-hover:text-blue-100 transition-colors leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
