@@ -14,7 +14,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col relative bg-background overflow-hidden pt-16 md:pt-20">
+    <section className="min-h-screen flex flex-col relative bg-background overflow-hidden pt-24 md:pt-32">
       {/* Decorative background accents */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         {/* Gradient glow */}
