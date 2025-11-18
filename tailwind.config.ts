@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        'bricolage': ['Bricolage Grotesque', 'sans-serif'],
+        'ivypresto': ['ivypresto-display', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
