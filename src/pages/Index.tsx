@@ -44,11 +44,11 @@ const Index = () => {
         socialItems={socialItems}
         displaySocials={true}
         displayItemNumbering={true}
-        menuButtonColor="#000"
-        openMenuButtonColor="#000"
+        menuButtonColor="#FFFFFF"
+        openMenuButtonColor="#FFFFFF"
         changeMenuColorOnOpen={false}
-        colors={['#c7d2fe', '#4f46e5']}
-        accentColor="#4f46e5"
+        colors={['#FFD700', '#FFA500']}
+        accentColor="#FFD700"
         onMenuOpen={() => console.log('Menu opened')}
         onMenuClose={() => console.log('Menu closed')}
       />
