@@ -1,13 +1,19 @@
+// index.tsx
 import StaggeredMenu from "@/components/ui/StaggeredMenu";
 import Hero from "@/components/Hero";
+// COMBINED/CLEANED IMPORTS: 
+import Slider from "@/components/Slider"; // SocialProof component
 import Statement from "@/components/Statement";
 import Featured from "@/components/Featured";
+import Wider from "@/components/Wider"; // Assuming this is another slider/marquee
 import Intro from "@/components/Intro";
 import Testimonials from "@/components/Testimonials";
-import SocialProof from "@/components/SocialProof";
+
 import FinalCTA from "@/components/FinalCTA";
 import Contact from "@/components/Contact";
 import ChatBot from "@/components/ChatBot";
+// NEW: Assuming ParallaxGallery is the component we worked on
+import ParallaxGallery from "@/components/ParallaxGallery"; 
 
 const Index = () => {
   const scrollToSection = (sectionId: string) => {
@@ -47,15 +53,25 @@ const Index = () => {
         onMenuClose={() => console.log('Menu closed')}
       />
       <Hero />
+    
+      {/* Slider (Social Proof Marquee) */}
+      <Slider /> 
+      
+      {/* NEW: Inserted Parallax Gallery to showcase work after the first marquee */}
+     
       <Statement />
       <Featured />
+      
+      {/* Wider (Second Marquee) - Stays after Featured */}
+      <Wider />
+      
       <section id="about">
         <Intro />
       </section>
       <section id="testimonials">
         <Testimonials />
       </section>
-      <SocialProof />
+     
       <FinalCTA />
       <section id="contact">
         <Contact />
