@@ -40,20 +40,26 @@ const Statement = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-blue-950 to-blue-900">
+    // Background is a light/whitish grey color (bg-gray-50)
+    <section className="py-20 px-4 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            <span className="text-white">Not Just Instant </span>
-            <span className="text-blue-400">Delivery, But..</span>
+        {/* UPDATED: Alignment changed to left, size decreased, font changed to semi-bold, and description added */}
+        <div className="text-left mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-3">
+            <span className="text-gray-800">Not Just Instant </span>
+            <span className="text-blue-600">Delivery, But..</span>
           </h2>
+          <p className="text-lg text-gray-600 max-w-3xl">
+            Discover the core values and unmatched benefits that make our certified creators the best choice for your high-quality content needs.
+          </p>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-900/40 to-blue-950/60 backdrop-blur-sm border border-blue-800/30 hover:border-blue-600/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20"
+              // Increased the blue tint and opacity for a stronger "blue glass" look
+              className="group relative overflow-hidden rounded-2xl bg-blue-100/70 backdrop-blur-md border border-blue-300/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-blue-600/30"
             >
               <div className="flex items-center gap-6 p-6 md:p-8">
                 <div className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden">
@@ -64,10 +70,12 @@ const Statement = () => {
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl md:text-2xl font-semibold mb-3 text-white group-hover:text-blue-300 transition-colors">
+                  {/* Text colors adjusted slightly for the stronger blue background,
+                      hover color is a darker blue for contrast */}
+                  <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-800 group-hover:text-blue-800 transition-colors">
                     {feature.title}
                   </h3>
-                  <p className="text-blue-200/80 group-hover:text-blue-100 transition-colors leading-relaxed">
+                  <p className="text-gray-700 group-hover:text-gray-800 transition-colors leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
