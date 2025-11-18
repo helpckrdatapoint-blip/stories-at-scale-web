@@ -40,16 +40,15 @@ const Statement = () => {
   ];
 
   return (
-    // Background is a light/whitish grey color (bg-gray-50)
-    <section className="py-20 px-4 bg-gray-50">
+    <section className="py-20 px-4 bg-background">
       <div className="container mx-auto max-w-7xl">
         {/* UPDATED: Alignment changed to left, size decreased, font changed to semi-bold, and description added */}
         <div className="text-left mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-3">
-            <span className="text-gray-800">Not Just Instant </span>
-            <span className="text-blue-600">Delivery, But..</span>
+            <span className="text-foreground">Not Just Instant </span>
+            <span className="text-primary">Delivery, But..</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl">
+          <p className="text-lg text-muted-foreground max-w-3xl">
             Discover the core values and unmatched benefits that make our certified creators the best choice for your high-quality content needs.
           </p>
         </div>
@@ -59,7 +58,7 @@ const Statement = () => {
             <div
               key={index}
               // Increased the blue tint and opacity for a stronger "blue glass" look
-              className="group relative overflow-hidden rounded-2xl bg-blue-100/70 backdrop-blur-md border border-blue-300/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-blue-600/30"
+              className="group relative overflow-hidden rounded-2xl bg-card backdrop-blur-md border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30"
             >
               <div className="flex items-center gap-6 p-6 md:p-8">
                 <div className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden">
@@ -72,10 +71,10 @@ const Statement = () => {
                 <div className="flex-1">
                   {/* Text colors adjusted slightly for the stronger blue background,
                       hover color is a darker blue for contrast */}
-                  <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-800 group-hover:text-blue-800 transition-colors">
+                  <h3 className="text-xl md:text-2xl font-semibold mb-3 text-card-foreground group-hover:text-primary transition-colors">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-700 group-hover:text-gray-800 transition-colors leading-relaxed">
+                  <p className="text-muted-foreground group-hover:text-foreground transition-colors leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
