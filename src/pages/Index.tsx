@@ -2,10 +2,10 @@
 import StaggeredMenu from "@/components/ui/StaggeredMenu";
 import Hero from "@/components/Hero";
 // COMBINED/CLEANED IMPORTS: 
-import Slider from "@/components/Slider"; // SocialProof component
+import Slider from "@/components/slider"; // SocialProof component
 import Statement from "@/components/Statement";
 import Featured from "@/components/Featured";
-import Wider from "@/components/Wider"; // Assuming this is another slider/marquee
+import Wider from "@/components/wider"; // Assuming this is another slider/marquee
 import Intro from "@/components/Intro";
 import Testimonials from "@/components/Testimonials";
 
