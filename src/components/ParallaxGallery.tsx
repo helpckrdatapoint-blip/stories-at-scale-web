@@ -2,35 +2,11 @@ import { motion, MotionValue, useScroll, useTransform } from "motion/react";
 import Lenis from "lenis";
 import { useEffect, useRef, useState } from "react";
 
-import reel1 from "@/assets/gallery/reel1.jpg";
-import reel2 from "@/assets/gallery/reel2.jpg";
-import reel3 from "@/assets/gallery/reel3.jpg";
-import reel4 from "@/assets/gallery/reel4.jpg";
-import reel5 from "@/assets/gallery/reel5.jpg";
-import reel6 from "@/assets/gallery/reel6.jpg";
-import reel7 from "@/assets/gallery/reel7.jpg";
-import reel8 from "@/assets/gallery/reel8.jpg";
-import reel9 from "@/assets/gallery/reel9.jpg";
-import reel10 from "@/assets/gallery/reel10.jpg";
-import reel11 from "@/assets/gallery/reel11.jpg";
-import reel12 from "@/assets/gallery/reel12.jpg";
-import reel13 from "@/assets/gallery/reel13.jpg";
+// NOTE: Using a single, publicly accessible demo video URL for all items.
+const DEMO_VIDEO_URL = "https://www.w3schools.com/html/mov_bbb.mp4"; 
 
-const images = [
-  reel1,
-  reel2,
-  reel3,
-  reel4,
-  reel5,
-  reel6,
-  reel7,
-  reel8,
-  reel9,
-  reel10,
-  reel11,
-  reel12,
-  reel13,
-];
+const videos = new Array(13).fill(DEMO_VIDEO_URL);
+
 
 const ParallaxGallery = () => {
   const gallery = useRef<HTMLDivElement>(null);
@@ -48,35 +24,39 @@ const ParallaxGallery = () => {
   const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3]);
 
   useEffect(() => {
-    const lenis = new Lenis();
+    if (typeof window !== 'undefined') {
+      const lenis = new Lenis();
 
-    const raf = (time: number) => {
-      lenis.raf(time);
+      const raf = (time: number) => {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      };
+
+      const resize = () => {
+        setDimension({ width: window.innerWidth, height: window.innerHeight });
+      };
+
+      window.addEventListener("resize", resize);
       requestAnimationFrame(raf);
-    };
+      resize();
 
-    const resize = () => {
-      setDimension({ width: window.innerWidth, height: window.innerHeight });
-    };
-
-    window.addEventListener("resize", resize);
-    requestAnimationFrame(raf);
-    resize();
-
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
+      return () => {
+        window.removeEventListener("resize", resize);
+      };
+    }
   }, []);
 
   return (
     <div className="w-full bg-background">
       <div className="flex h-[20vh] items-center justify-center py-8">
-        <div className="grid content-start justify-items-center gap-4 text-center">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">
-            Featured Work
+        <div className="grid content-start w-full max-w-7xl px-4 mx-auto text-right"> 
+          <h2 className="text-5xl font-semibold text-gray-900 md:text-6xl">
+            {/* UPDATED: Added underline class to 'Showcase' */}
+            Our <span className="text-blue-600">Viral Work</span> <span className="underline decoration-blue-600 decoration-4">Showcase</span>
           </h2>
-          <p className="max-w-2xl text-base text-muted-foreground">
-            Scroll down to explore our stunning Instagram Reels production showcase
+          {/* Added ml-auto to push the max-width paragraph to the right */}
+          <p className="max-w-3xl text-xl text-gray-500 mt-2 ml-auto">
+            Explore a selection of high-impact Instagram Reels and short-form videos crafted by our certified creators. See the difference quality production makes.
           </p>
         </div>
       </div>
@@ -85,10 +65,11 @@ const ParallaxGallery = () => {
         ref={gallery}
         className="relative box-border flex h-[175vh] gap-[2vw] overflow-hidden p-[2vw]"
       >
-        <Column images={[images[0], images[1], images[2]]} y={y} />
-        <Column images={[images[3], images[4], images[5]]} y={y2} />
-        <Column images={[images[6], images[7], images[8]]} y={y3} />
-        <Column images={[images[9], images[10], images[11]]} y={y4} />
+        {/* Pass videos in chunks for the columns */}
+        <Column videos={videos.slice(0, 3)} y={y} />
+        <Column videos={videos.slice(3, 6)} y={y2} />
+        <Column videos={videos.slice(6, 9)} y={y3} />
+        <Column videos={videos.slice(9, 12)} y={y4} />
       </div>
 
       <div className="flex h-[20vh] items-center justify-center py-8">
@@ -96,6 +77,10 @@ const ParallaxGallery = () => {
           <p className="max-w-2xl text-base text-muted-foreground">
             Ready to create viral content that stands out?
           </p>
+          {/* Button color is black (bg-gray-900) */}
+          <button className="mt-4 rounded-full bg-gray-900 px-8 py-3 font-semibold text-white shadow-xl transition duration-300 hover:bg-gray-700">
+            Book Now
+          </button>
         </div>
       </div>
     </div>
@@ -103,22 +88,27 @@ const ParallaxGallery = () => {
 };
 
 type ColumnProps = {
-  images: string[];
+  videos: string[]; 
   y: MotionValue<number>;
 };
 
-const Column = ({ images, y }: ColumnProps) => {
+const Column = ({ videos, y }: ColumnProps) => { 
   return (
     <motion.div
       className="relative -top-[45%] flex h-full w-1/4 min-w-[250px] flex-col gap-[2vw] first:top-[-45%] [&:nth-child(2)]:top-[-95%] [&:nth-child(3)]:top-[-45%] [&:nth-child(4)]:top-[-75%]"
       style={{ y }}
     >
-      {images.map((src, i) => (
+      {videos.map((src, i) => ( 
         <div key={i} className="relative h-full w-full overflow-hidden rounded-lg">
-          <img
+          <video
             src={src}
-            alt={`Dhasha Media Instagram Reels production ${i + 1}`}
+            autoPlay 
+            loop     
+            muted    
+            playsInline 
+            title={`Dhasha Media Reel Showcase ${i + 1}`}
             className="pointer-events-none h-full w-full object-cover"
+            poster="https://via.placeholder.com/300x500/000000/FFFFFF?text=Loading+Video" 
           />
         </div>
       ))}
