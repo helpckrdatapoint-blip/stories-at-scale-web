@@ -18,8 +18,8 @@ const socialProofWords = [
   
   const SocialProof = () => {
     return (
-      // Section with increased height and blue background
-      <section id="social-proof" className="w-full py-10 bg-blue-700 overflow-hidden">
+      // Section with gold background
+      <section id="social-proof" className="w-full py-10 overflow-hidden" style={{ backgroundColor: '#FFD700' }}>
         {/* CSS animation for the marquee effect */}
         <style>
           {`
@@ -39,13 +39,13 @@ const socialProofWords = [
           {/* Render the words twice for a seamless loop */}
           {socialProofWords.map((word, index) => (
             // font-semibold is intentionally NOT added here as requested in the comments
-            <span key={`word1-${index}`} className="text-3xl md:text-4xl text-white mx-8">
+            <span key={`word1-${index}`} className="text-3xl md:text-4xl mx-8" style={{ color: '#000000' }}>
               {word}
             </span>
           ))}
           {socialProofWords.map((word, index) => (
             // font-semibold is intentionally NOT added here as requested in the comments
-            <span key={`word2-${index}`} className="text-3xl md:text-4xl text-white mx-8">
+            <span key={`word2-${index}`} className="text-3xl md:text-4xl mx-8" style={{ color: '#000000' }}>
               {word}
             </span>
           ))}

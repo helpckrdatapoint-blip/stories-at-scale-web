@@ -18,27 +18,27 @@ const Hero = () => {
       {/* Decorative background accents */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         {/* Gradient glow */}
-        <div className="absolute inset-x-0 -top-24 h-64 bg-gradient-to-b from-blue-200/50 to-transparent" />
-        <div className="absolute inset-x-0 -bottom-24 h-64 bg-gradient-to-t from-blue-100/40 to-transparent" />
+        <div className="absolute inset-x-0 -top-24 h-64 bg-gradient-to-b from-primary/20 to-transparent" />
+        <div className="absolute inset-x-0 -bottom-24 h-64 bg-gradient-to-t from-primary/15 to-transparent" />
 
         {/* Accent circles */}
-        <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-blue-500/70 ring-2 ring-blue-600/40" />
-        <div className="absolute top-1/3 -left-36 w-80 h-80 rounded-full bg-blue-600/70 ring-2 ring-blue-700/40" />
-        <div className="absolute -bottom-40 -left-20 w-[36rem] h-[36rem] rounded-full bg-blue-400/50 ring-2 ring-blue-500/30" />
+        <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/30 ring-2 ring-primary/20" />
+        <div className="absolute top-1/3 -left-36 w-80 h-80 rounded-full bg-primary/30 ring-2 ring-primary/20" />
+        <div className="absolute -bottom-40 -left-20 w-[36rem] h-[36rem] rounded-full bg-primary/20 ring-2 ring-primary/15" />
 
         {/* Semi-circles */}
-        <div className="absolute -top-10 right-6 w-80 h-40 rounded-b-full bg-blue-500/70 ring-2 ring-blue-600/40" />
-        <div className="absolute top-1/4 -left-10 w-40 h-80 rounded-r-full bg-blue-600/70 ring-2 ring-blue-700/40" />
+        <div className="absolute -top-10 right-6 w-80 h-40 rounded-b-full bg-primary/30 ring-2 ring-primary/20" />
+        <div className="absolute top-1/4 -left-10 w-40 h-80 rounded-r-full bg-primary/30 ring-2 ring-primary/20" />
 
         {/* Soft ring behind heading */}
-        <div className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[42rem] h-[42rem] rounded-full ring-1 ring-blue-300/40" />
+        <div className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[42rem] h-[42rem] rounded-full ring-1 ring-primary/20" />
       </div>
       
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 relative z-10 mb-6">
         <div className="max-w-4xl mx-auto text-center">
           <button
             onClick={() => scrollToSection("contact")}
-            className="inline-flex items-center gap-2 rounded-full border border-blue-600/30 bg-blue-600/10 text-blue-700 px-2.5 py-1 text-xs font-medium mb-3 hover:bg-blue-600/15 hover:border-blue-600/50 transition-colors"
+            className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 text-primary px-2.5 py-1 text-xs font-medium mb-3 hover:bg-primary/15 hover:border-primary/50 transition-colors"
             aria-label="Instagram Reels with Dhasha Media"
           >
             <span>Instagram Reels • Dhasha Media</span>
@@ -47,7 +47,7 @@ const Hero = () => {
             Viral reels. Real results.
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4 mb-2">
-            Dhasha Media crafts <span className="relative text-blue-600 after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:w-full after:bg-blue-200/60 after:rounded-full">reels</span> that <FlipWords words={words} className="text-blue-600 text-base sm:text-lg md:text-xl" /> your reach
+            Dhasha Media crafts <span className="relative text-primary after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:w-full after:bg-primary/60 after:rounded-full">reels</span> that <FlipWords words={words} className="text-primary text-base sm:text-lg md:text-xl" /> your reach
           </p>
           <p className="mt-2 text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto px-4">
             Expert Instagram Reels production and strategy to boost your brand visibility and engagement.

@@ -14,7 +14,7 @@ const dhashaMediaWords = [
   
 // Separator element
 const Separator = () => (
-    <span className="text-3xl md:text-4xl text-blue-400 mx-8">*</span>
+    <span className="text-3xl md:text-4xl mx-8" style={{ color: '#000000' }}>*</span>
 );
   
 const SocialProof = () => {
@@ -22,8 +22,8 @@ const SocialProof = () => {
     const marqueeContent = dhashaMediaWords.flatMap((word, index) => {
         // Only add the separator after the word, not at the end of the last word
         return index < dhashaMediaWords.length - 1
-            ? [<span key={`word-${index}`} className="text-3xl md:text-4xl text-white mx-8">{word}</span>, <Separator key={`sep-${index}`} />]
-            : [<span key={`word-${index}`} className="text-3xl md:text-4xl text-white mx-8">{word}</span>];
+            ? [<span key={`word-${index}`} className="text-3xl md:text-4xl mx-8" style={{ color: '#000000' }}>{word}</span>, <Separator key={`sep-${index}`} />]
+            : [<span key={`word-${index}`} className="text-3xl md:text-4xl mx-8" style={{ color: '#000000' }}>{word}</span>];
     });
 
     // To ensure a seamless loop, we need to repeat the content.
@@ -31,8 +31,8 @@ const SocialProof = () => {
     const fullContent = [...marqueeContent, <Separator key="final-sep" />, ...marqueeContent, <Separator key="final-sep-2" />];
     
     return (
-      // Section with black background (bg-gray-900)
-      <section id="social-proof" className="w-full py-10 bg-gray-900 overflow-hidden">
+      // Section with gold background
+      <section id="social-proof" className="w-full py-10 overflow-hidden" style={{ backgroundColor: '#FFD700' }}>
         {/* CSS animation for the marquee effect */}
         <style>
           {`
