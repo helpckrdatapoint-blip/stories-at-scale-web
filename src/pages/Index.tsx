@@ -7,7 +7,7 @@ import Statement from "@/components/Statement";
 import Featured from "@/components/Featured";
 import Wider from "@/components/wider"; // Assuming this is another slider/marquee
 import Intro from "@/components/Intro";
-import Testimonials from "@/components/Testimonials";
+import InfiniteMovingCardsDemo from "@/components/InfiniteMovingCardsDemo";
 
 import FinalCTA from "@/components/FinalCTA";
 import Contact from "@/components/Contact";
@@ -69,7 +69,7 @@ const Index = () => {
         <Intro />
       </section>
       <section id="testimonials">
-        <Testimonials />
+        <InfiniteMovingCardsDemo />
       </section>
      
       <FinalCTA />
