@@ -1,5 +1,7 @@
 // index.tsx
+import { useState } from "react";
 import StaggeredMenu from "@/components/ui/StaggeredMenu";
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 // COMBINED/CLEANED IMPORTS: 
 import Slider from "@/components/slider"; // SocialProof component
@@ -16,6 +18,7 @@ import ChatBot from "@/components/ChatBot";
 import ParallaxGallery from "@/components/ParallaxGallery"; 
 
 const Index = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -38,6 +41,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navbar isMenuOpen={isMenuOpen} onMenuToggle={() => setIsMenuOpen(!isMenuOpen)} />
       <StaggeredMenu
         position="right"
         items={menuItems}
@@ -49,10 +53,12 @@ const Index = () => {
         changeMenuColorOnOpen={false}
         colors={['#FFD700', '#FFA500']}
         accentColor="#FFD700"
-        onMenuOpen={() => console.log('Menu opened')}
-        onMenuClose={() => console.log('Menu closed')}
+        onMenuOpen={() => setIsMenuOpen(true)}
+        onMenuClose={() => setIsMenuOpen(false)}
       />
-      <Hero />
+      <div className="pt-20">
+        <Hero />
+      </div>
     
       {/* Slider (Social Proof Marquee) */}
       <Slider /> 
