@@ -50,12 +50,12 @@ const ParallaxGallery = () => {
     <div className="w-full bg-background">
       <div className="flex h-[20vh] items-center justify-center py-8">
         <div className="grid content-start w-full max-w-7xl px-4 mx-auto text-right"> 
-          <h2 className="text-5xl font-semibold text-gray-900 md:text-6xl">
+          <h2 className="text-5xl font-semibold text-foreground md:text-6xl">
             {/* UPDATED: Added underline class to 'Showcase' */}
-            Our <span className="text-blue-600">Viral Work</span> <span className="underline decoration-blue-600 decoration-4">Showcase</span>
+            Our <span className="text-primary">Viral Work</span> <span className="underline decoration-primary decoration-4">Showcase</span>
           </h2>
           {/* Added ml-auto to push the max-width paragraph to the right */}
-          <p className="max-w-3xl text-xl text-gray-500 mt-2 ml-auto">
+          <p className="max-w-3xl text-xl text-foreground/80 mt-2 ml-auto">
             Explore a selection of high-impact Instagram Reels and short-form videos crafted by our certified creators. See the difference quality production makes.
           </p>
         </div>
@@ -77,8 +77,8 @@ const ParallaxGallery = () => {
           <p className="max-w-2xl text-base text-muted-foreground">
             Ready to create viral content that stands out?
           </p>
-          {/* Button color is black (bg-gray-900) */}
-          <button className="mt-4 rounded-full bg-gray-900 px-8 py-3 font-semibold text-white shadow-xl transition duration-300 hover:bg-gray-700">
+          {/* Button color is gold (bg-primary) */}
+          <button className="mt-4 rounded-full bg-primary px-8 py-3 font-semibold text-black shadow-xl transition duration-300 hover:bg-primary/90">
             Book Now
           </button>
         </div>
