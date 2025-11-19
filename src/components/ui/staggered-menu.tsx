@@ -29,8 +29,6 @@ type StaggeredMenuProps = {
   menuButtonColor?: string;
   openMenuButtonColor?: string;
   accentColor?: string;
-  onMenuOpen?: () => void;
-  onMenuClose?: () => void;
 };
 
 const menuVariants = {
@@ -71,8 +69,6 @@ export const StaggeredMenu = ({
   displayItemNumbering = true,
   menuButtonColor = "#000",
   openMenuButtonColor = "#fff",
-  onMenuOpen,
-  onMenuClose,
 }: StaggeredMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -88,17 +84,17 @@ export const StaggeredMenu = ({
     />
   ));
 
-  // Sync internal state with parent
-  useEffect(() => {
-    if (isOpen) {
-      onMenuOpen?.();
-    } else {
-      onMenuClose?.();
-    }
-  }, [isOpen, onMenuOpen, onMenuClose]);
-
   return (
     <>
+      {/* Menu Toggle Button */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="fixed top-5 right-5 z-50 p-2 rounded-full focus:outline-none"
+        style={{ color: isOpen ? openMenuButtonColor : menuButtonColor }}
+      >
+        {isOpen ? <X size={28} /> : <Menu size={28} />}
+      </button>
+
       <AnimatePresence>
         {isOpen && (
           <motion.div
