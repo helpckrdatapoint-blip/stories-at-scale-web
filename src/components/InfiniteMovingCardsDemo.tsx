@@ -5,18 +5,18 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 export default function InfiniteMovingCardsDemo() {
   return (
-    <div className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-12">
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-foreground text-center mb-4">
+    <div className="py-16 sm:py-20 bg-background overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground text-center mb-4">
           What Our <span className="text-primary">Clients Say</span>
         </h2>
-        <p className="text-lg sm:text-xl text-foreground/80 text-center max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg md:text-xl text-foreground/80 text-center max-w-2xl mx-auto">
           Hear from creators and brands who've transformed their content with us
         </p>
       </div>
 
       {/* First Row - Moving Right */}
-      <div className="mb-8">
+      <div className="mb-6 sm:mb-8">
         <InfiniteMovingCards
           items={testimonialsRow1}
           direction="right"

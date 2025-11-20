@@ -73,34 +73,34 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative z-20 w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]",
         className,
       )}
     >
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
+          "flex w-max min-w-full shrink-0 flex-nowrap gap-4 sm:gap-6 py-4",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]",
         )}
       >
         {items.map((item, idx) => (
           <li
-            className="relative w-[350px] max-w-full shrink-0 rounded-2xl border-2 border-primary/20 px-8 py-6 md:w-[450px] shadow-lg hover:shadow-xl transition-shadow"
+            className="relative w-[280px] sm:w-[350px] md:w-[400px] lg:w-[450px] max-w-full shrink-0 rounded-2xl border-2 border-primary/20 px-6 sm:px-8 py-6 shadow-lg hover:shadow-xl transition-shadow"
             style={{ background: '#FFD700' }}
-            key={item.name}
+            key={`${item.name}-${idx}`}
           >
             <blockquote>
-              <span className="relative z-20 text-sm leading-[1.6] font-normal text-black">
+              <span className="relative z-20 text-sm sm:text-base leading-relaxed font-normal text-black block mb-4">
                 "{item.quote}"
               </span>
-              <div className="relative z-20 mt-6 flex flex-row items-center">
+              <div className="relative z-20 mt-4 flex flex-row items-center">
                 <span className="flex flex-col gap-1">
-                  <span className="text-sm leading-[1.6] font-semibold text-black">
+                  <span className="text-sm sm:text-base leading-relaxed font-semibold text-black">
                     {item.name}
                   </span>
-                  <span className="text-sm leading-[1.6] font-normal text-black/80">
+                  <span className="text-xs sm:text-sm leading-relaxed font-normal text-black/80">
                     {item.title}
                   </span>
                 </span>
