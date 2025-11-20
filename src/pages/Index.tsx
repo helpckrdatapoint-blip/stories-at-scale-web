@@ -12,8 +12,6 @@ import InfiniteMovingCardsDemo from "@/components/InfiniteMovingCardsDemo";
 import FinalCTA from "@/components/FinalCTA";
 import Contact from "@/components/Contact";
 import ChatBot from "@/components/ChatBot";
-// NEW: Assuming ParallaxGallery is the component we worked on
-import ParallaxGallery from "@/components/ParallaxGallery";
 import Footer from "@/components/Footer";
 
 const Index = () => {
