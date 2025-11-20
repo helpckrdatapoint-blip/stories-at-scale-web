@@ -49,13 +49,11 @@ const ParallaxGallery = () => {
   return (
     <div className="w-full bg-background">
       <div className="flex h-[20vh] items-center justify-center py-8">
-        <div className="grid content-start w-full max-w-7xl px-4 mx-auto text-right"> 
+        <div className="grid content-start w-full max-w-7xl px-4 mx-auto text-center"> 
           <h2 className="text-5xl font-semibold text-foreground md:text-6xl">
-            {/* UPDATED: Added underline class to 'Showcase' */}
             Our <span className="text-primary">Viral Work</span> <span className="underline decoration-primary decoration-4">Showcase</span>
           </h2>
-          {/* Added ml-auto to push the max-width paragraph to the right */}
-          <p className="max-w-3xl text-xl text-foreground/80 mt-2 ml-auto">
+          <p className="max-w-3xl text-xl text-foreground/80 mt-2 mx-auto">
             Explore a selection of high-impact Instagram Reels and short-form videos crafted by our certified creators. See the difference quality production makes.
           </p>
         </div>
