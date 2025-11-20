@@ -68,8 +68,6 @@ const Index = () => {
       
       <Pricing />
       
-      <ParallaxGallery />
-      
       <section id="testimonials">
         <InfiniteMovingCardsDemo />
       </section>
