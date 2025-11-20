@@ -35,10 +35,25 @@ const FinalCTA = () => {
             Let's create something extraordinary together. Your story deserves to be heard.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
-            <Button size="lg" className="text-lg px-8 py-6 rounded-full">
+            <Button 
+              size="lg" 
+              className="text-lg px-8 py-6 rounded-full"
+              onClick={() => {
+                const el = document.getElementById('contact');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
               Start Your Project
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 rounded-full">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="text-lg px-8 py-6 rounded-full border-primary text-foreground hover:bg-primary hover:text-black"
+              onClick={() => {
+                const el = document.getElementById('pricing');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
               Learn More
             </Button>
           </div>

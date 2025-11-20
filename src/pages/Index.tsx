@@ -6,14 +6,15 @@ import Slider from "@/components/slider"; // SocialProof component
 import Statement from "@/components/Statement";
 import Featured from "@/components/Featured";
 import Wider from "@/components/wider"; // Assuming this is another slider/marquee
-import Intro from "@/components/Intro";
+import Pricing from "@/components/Pricing";
 import InfiniteMovingCardsDemo from "@/components/InfiniteMovingCardsDemo";
 
 import FinalCTA from "@/components/FinalCTA";
 import Contact from "@/components/Contact";
 import ChatBot from "@/components/ChatBot";
 // NEW: Assuming ParallaxGallery is the component we worked on
-import ParallaxGallery from "@/components/ParallaxGallery"; 
+import ParallaxGallery from "@/components/ParallaxGallery";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   const scrollToSection = (sectionId: string) => {
@@ -26,7 +27,7 @@ const Index = () => {
   const menuItems = [
     { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
     { label: 'Services', ariaLabel: 'View our services', link: '/services' },
-    { label: 'About', ariaLabel: 'Learn about us', link: '/about' },
+    { label: 'Pricing', ariaLabel: 'View pricing plans', link: '#pricing' },
     { label: 'Contact', ariaLabel: 'Get in touch', link: '/contact' }
   ];
 
@@ -65,9 +66,10 @@ const Index = () => {
       {/* Wider (Second Marquee) - Stays after Featured */}
       <Wider />
       
-      <section id="about">
-        <Intro />
-      </section>
+      <Pricing />
+      
+      <ParallaxGallery />
+      
       <section id="testimonials">
         <InfiniteMovingCardsDemo />
       </section>
@@ -77,6 +79,7 @@ const Index = () => {
         <Contact />
       </section>
       <ChatBot />
+      <Footer />
     </div>
   );
 };
