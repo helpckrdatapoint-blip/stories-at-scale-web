@@ -21,7 +21,7 @@ const ChatBot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hi! I'm here to help you with any questions about our storytelling services. How can I assist you today?",
+      text: "Hello! Welcome to Dhasha Media. I'm here to help elevate your digital presence. How can I assist you today?",
       isUser: false,
       timestamp: new Date()
     }
@@ -40,31 +40,31 @@ const ChatBot = () => {
     }
   }, [messages, isOpen]);
 
-    const predefinedResponses = {
+  const predefinedResponses = {
     greeting: [
-      "Hello! Welcome to Stories at Scale. How can I help you today?",
-      "Hi there! I'm here to answer any questions about our storytelling services.",
-      "Welcome! What would you like to know about our brand storytelling solutions?"
+      "Hi there! Welcome to Dhasha Media. Looking to grow your brand?",
+      "Hello! I'm Dhasha Media's virtual assistant. What brings you here today?",
+      "Welcome! Whether it's marketing or media production, we're here to help. What do you need?"
     ],
     services: [
-      "We offer comprehensive storytelling services including brand narrative development, content strategy, social media storytelling, and video content creation. Would you like to know more about any specific service?",
-      "Our main services include: Brand Story Development, Content Marketing Strategy, Social Media Campaigns, Video Storytelling, and Brand Voice Creation. Which interests you most?"
+      "Dhasha Media offers a 360° approach to digital growth. We specialize in Digital Marketing, Brand Strategy, Web Development, and Multimedia Production. Would you like details on a specific service?",
+      "We turn ideas into impact. Our core services include SEO/SEM, Social Media Management, Content Creation, and Tech Development. Which one interests you?"
     ],
     pricing: [
-      "Our pricing varies based on project scope and requirements. We offer custom packages tailored to your specific needs. Would you like to schedule a consultation to discuss your project?",
-      "We provide customized quotes based on your unique storytelling needs. I'd recommend booking a free consultation where we can discuss your goals and provide detailed pricing."
+      "Every brand is unique, and so are our packages. We offer customized quotes based on your specific campaign goals and requirements. Shall we set up a quick call to discuss your budget?",
+      "We believe in value-driven pricing. Since project scopes vary from simple branding to complex web apps, we recommend a free consultation to get an accurate quote."
     ],
     process: [
-      "Our process typically involves: 1) Discovery consultation, 2) Strategy development, 3) Content creation, 4) Implementation, and 5) Performance tracking. Each project is tailored to your specific goals.",
-      "We start with understanding your brand and goals, then develop a custom storytelling strategy, create compelling content, and help you implement it across your channels."
+      "Our workflow is designed for results: 1) Discovery & Audit, 2) Strategic Planning, 3) Creative Execution, 4) Launch, and 5) Analytics & Optimization.",
+      "We start by understanding your market position, then we craft a tailored strategy. Once approved, our media and tech teams execute the plan with precision."
     ],
     timeline: [
-      "Project timelines vary depending on scope, but most storytelling projects take 4-8 weeks from start to finish. We'll provide a detailed timeline during our initial consultation.",
-      "Typical projects range from 3-12 weeks depending on complexity. We work efficiently while ensuring quality storytelling that resonates with your audience."
+      "Timelines depend on the project type. A social media campaign might launch in 2 weeks, while a full website overhaul could take 4-8 weeks. We provide a strict roadmap during onboarding.",
+      "We prioritize both speed and quality. Small projects usually take 2-3 weeks, while comprehensive media strategies run on a monthly retainer basis."
     ],
     contact: [
-      "You can reach us through the contact form on this website, or click 'Get Started' to begin your storytelling journey. We typically respond within 24 hours.",
-      "Feel free to use our contact form below or click any 'Get Started' button to schedule a consultation. We're excited to help tell your story!"
+      "Ready to scale? You can use the contact form on this page or email us directly at hello@dhashamedia.com.",
+      "Let's get the ball rolling! Click the 'Contact Us' button above or leave your email here, and a Dhasha Media representative will reach out shortly."
     ]
   };
 
@@ -75,29 +75,28 @@ const ChatBot = () => {
       return predefinedResponses.greeting[Math.floor(Math.random() * predefinedResponses.greeting.length)];
     }
     
-    if (message.includes('service') || message.includes('what do you do') || message.includes('offerings')) {
+    if (message.includes('service') || message.includes('what do you do') || message.includes('offerings') || message.includes('work')) {
       return predefinedResponses.services[Math.floor(Math.random() * predefinedResponses.services.length)];
     }
     
-    if (message.includes('price') || message.includes('cost') || message.includes('budget')) {
+    if (message.includes('price') || message.includes('cost') || message.includes('budget') || message.includes('quote')) {
       return predefinedResponses.pricing[Math.floor(Math.random() * predefinedResponses.pricing.length)];
     }
     
-    if (message.includes('process') || message.includes('how do you work') || message.includes('methodology')) {
+    if (message.includes('process') || message.includes('how') || message.includes('steps')) {
       return predefinedResponses.process[Math.floor(Math.random() * predefinedResponses.process.length)];
     }
     
-    if (message.includes('timeline') || message.includes('how long') || message.includes('duration')) {
+    if (message.includes('time') || message.includes('long') || message.includes('duration')) {
       return predefinedResponses.timeline[Math.floor(Math.random() * predefinedResponses.timeline.length)];
     }
     
-    if (message.includes('contact') || message.includes('reach') || message.includes('get in touch')) {
+    if (message.includes('contact') || message.includes('email') || message.includes('number') || message.includes('talk')) {
       return predefinedResponses.contact[Math.floor(Math.random() * predefinedResponses.contact.length)];
     }
     
-    return "Thank you for your question! For specific inquiries about our storytelling services, I'd recommend scheduling a consultation where our team can provide detailed answers tailored to your needs. You can get started by clicking the 'Get Started' button on our website.";
+    return "Thanks for reaching out! To give you the best advice for your media and tech needs, I'd recommend speaking with one of our strategists directly. Please check our Contact page to book a meeting.";
   };
-
 
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
@@ -168,7 +167,7 @@ const ChatBot = () => {
       <div className="fixed bottom-6 right-6 z-50">
         <Button
           onClick={() => setIsOpen(!isOpen)}
-          className="rounded-full w-16 h-16 shadow-lg hover:shadow-xl transition-all duration-300"
+          className="rounded-full w-16 h-16 shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-primary/90"
           size="icon"
           aria-label="Toggle Chat"
         >
@@ -180,7 +179,7 @@ const ChatBot = () => {
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              {isOpen ? <X className="w-7 h-7" /> : <MessageCircle className="w-7 h-7" />}
+              {isOpen ? <X className="w-7 h-7 text-white" /> : <MessageCircle className="w-7 h-7 text-white" />}
             </motion.div>
           </AnimatePresence>
         </Button>
@@ -194,27 +193,27 @@ const ChatBot = () => {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="fixed bottom-24 right-6 w-[440px] h-[630px] z-50 origin-bottom-right"
+            className="fixed bottom-24 right-6 w-[380px] sm:w-[440px] h-[600px] z-50 origin-bottom-right"
           >
-            <Card className="h-full w-full flex flex-col shadow-2xl border-border bg-background">
+            <Card className="h-full w-full flex flex-col shadow-2xl border-border bg-background overflow-hidden">
               {/* Header */}
-              <div className="flex items-center justify-between p-4 border-b border-border bg-primary text-primary-foreground rounded-t-lg">
-                <div>
-                  <h3 className="font-semibold text-lg">Stories at Scale</h3>
-                  <p className="text-sm opacity-90">We're here to help!</p>
+              <div className="flex items-center justify-between p-4 border-b border-border bg-primary text-primary-foreground">
+                <div className="flex flex-col">
+                  <h3 className="font-bold text-lg tracking-wide">Dhasha Media</h3>
+                  <p className="text-xs opacity-90 font-light">Digital Excellence Partner</p>
                 </div>
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => setIsOpen(false)}
-                  className="text-primary-foreground hover:bg-primary/80 rounded-full"
+                  className="text-primary-foreground hover:bg-primary/80 rounded-full w-8 h-8"
                 >
                   <X className="w-5 h-5" />
                 </Button>
               </div>
 
               {/* Messages */}
-              <ScrollArea className="flex-1 p-4 bg-background/90">
+              <ScrollArea className="flex-1 p-4 bg-background/95">
                 <div className="space-y-4">
                   {messages.map((message) => (
                     <div
@@ -226,10 +225,10 @@ const ChatBot = () => {
                     >
                       <div
                         className={cn(
-                          "max-w-[85%] rounded-lg px-4 py-2 text-base",
+                          "max-w-[85%] rounded-2xl px-4 py-3 text-sm shadow-sm",
                           message.isUser
-                            ? "bg-primary text-primary-foreground"
-                            : "bg-muted"
+                            ? "bg-primary text-primary-foreground rounded-br-none"
+                            : "bg-muted text-foreground rounded-bl-none border border-border/50"
                         )}
                       >
                         {message.text}
@@ -239,11 +238,11 @@ const ChatBot = () => {
                   
                   {isTyping && (
                     <div className="flex justify-start">
-                      <div className="bg-muted max-w-[85%] rounded-lg px-4 py-2 text-base">
+                      <div className="bg-muted max-w-[85%] rounded-2xl rounded-bl-none px-4 py-3 border border-border/50">
                         <div className="flex space-x-1">
-                          <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                          <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                          <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                          <div className="w-2 h-2 bg-foreground/40 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                          <div className="w-2 h-2 bg-foreground/40 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                          <div className="w-2 h-2 bg-foreground/40 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
                         </div>
                       </div>
                     </div>
@@ -253,23 +252,23 @@ const ChatBot = () => {
               </ScrollArea>
 
               {/* Input */}
-              <div className="p-4 border-t border-border bg-background/90 rounded-b-lg">
-                <div className="flex space-x-2">
+              <div className="p-4 border-t border-border bg-background">
+                <div className="flex space-x-2 items-center">
                   <Input
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={handleKeyPress}
-                    placeholder="Type your message..."
-                    className="flex-1 h-12 text-base"
+                    placeholder="Ask about our services..."
+                    className="flex-1 h-11 rounded-full px-4 focus-visible:ring-primary/20"
                     disabled={isTyping}
                   />
                   <Button
                     onClick={handleSendMessage}
                     disabled={!inputValue.trim() || isTyping}
                     size="icon"
-                    className="h-12 w-12"
+                    className="h-11 w-11 rounded-full shrink-0"
                   >
-                    <Send className="w-5 h-5" />
+                    <Send className="w-5 h-5 ml-0.5" />
                   </Button>
                 </div>
               </div>
