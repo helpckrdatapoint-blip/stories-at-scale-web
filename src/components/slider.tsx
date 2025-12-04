@@ -1,57 +1,56 @@
-// slider.tsx
-import React from 'react';
+"use client";
 
-// Data array for social proof phrases
+import React from "react";
+import { motion } from "framer-motion";
+
 const socialProofWords = [
-    "Wedding Reels",
-    "Youtube Videos",
-    "Cinematic Videos",
-    "Content Creation",
-    "Instant Reels",
-    "Creative Collabration",
-    "Business Promotions",
-    "News",
-    "Event Management",
-    "Drone Shoots"
+  "Wedding Reels",
+  "Youtube Videos",
+  "Cinematic Videos",
+  "Content Creation",
+  "Instant Reels",
+  "Creative Collaboration",
+  "Business Promotions",
+  "News",
+  "Event Management",
+  "Drone Shoots",
+];
 
-  ];
-  
-  const SocialProof = () => {
-    return (
-      // Section with gold background
-      <section id="social-proof" className="w-full py-10 overflow-hidden" style={{ backgroundColor: '#FFD700' }}>
-        {/* CSS animation for the marquee effect */}
-        <style>
-          {`
-            @keyframes marquee {
-              0% { transform: translateX(0%); }
-              100% { transform: translateX(-50%); }
-            }
-            .animate-marquee {
-              animation: marquee 20s linear infinite;
-            }
-          `}
-        </style>
-  
-        {/* The width is set to w-max to contain all rendered words.
-            The content is rendered twice for a seamless loop. */}
-        <div className="flex w-max items-center animate-marquee">
-          {/* Render the words twice for a seamless loop */}
-          {socialProofWords.map((word, index) => (
-            // font-semibold is intentionally NOT added here as requested in the comments
-            <span key={`word1-${index}`} className="text-3xl md:text-4xl mx-8" style={{ color: '#000000' }}>
-              {word}
-            </span>
+const SocialProof = () => {
+  return (
+    <section className="relative w-full py-5 bg-yellow-500 overflow-hidden border-y border-yellow-600 z-20">
+      
+      {/* Optional: Subtle Grain Texture */}
+      <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay pointer-events-none"></div>
+
+      <div className="flex overflow-hidden">
+        <motion.div
+          initial={{ x: 0 }}
+          animate={{ x: "-50%" }}
+          transition={{
+            duration: 30,
+            ease: "linear",
+            repeat: Infinity,
+          }}
+          className="flex min-w-full items-center gap-12 whitespace-nowrap pr-12"
+        >
+          {/* Render list twice for seamless loop */}
+          {[...socialProofWords, ...socialProofWords].map((word, index) => (
+            <div key={index} className="flex items-center gap-12">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-black">
+                {word}
+              </span>
+              
+              {/* Vertical Pipe Separator */}
+              <span className="text-3xl sm:text-4xl md:text-5xl font-light text-black/40 pb-1">
+                |
+              </span>
+            </div>
           ))}
-          {socialProofWords.map((word, index) => (
-            // font-semibold is intentionally NOT added here as requested in the comments
-            <span key={`word2-${index}`} className="text-3xl md:text-4xl mx-8" style={{ color: '#000000' }}>
-              {word}
-            </span>
-          ))}
-        </div>
-      </section>
-    );
-  };
-  
-  export default SocialProof;
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default SocialProof;
