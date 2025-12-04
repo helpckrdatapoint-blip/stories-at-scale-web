@@ -9,6 +9,8 @@ import lockIcon from "@/assets/lock.png";
 import courierIcon from "@/assets/courier.png";
 import girlIcon from "@/assets/girl.png";
 import discountIcon from "@/assets/discount-tag.png";
+import travelAgentIcon from "@/assets/travel-agent.png";
+import instantIcon from "@/assets/instant.png";
 
 const Statement = () => {
   const features = [
@@ -22,6 +24,7 @@ const Statement = () => {
       title: "Easy Booking",
       description: "Stop struggling with complex booking procedure",
       image: easyBooking,
+      badge: travelAgentIcon,
     },
     {
       title: "Unbelievable Pricing",
@@ -39,7 +42,7 @@ const Statement = () => {
       title: "Instant Reels, Instant Editing",
       description: "No hidden charges! Clients get upfront pricing, secure payment options, and a seamless checkout experience.",
       image: instantDelivery,
-      badge: courierIcon,
+      badge: instantIcon,
     },
     {
       title: "Women Safety",
