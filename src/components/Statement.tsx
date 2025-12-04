@@ -4,6 +4,7 @@ import pricing from "@/assets/features/pricing.jpg";
 import secure from "@/assets/features/secure.jpg";
 import instantDelivery from "@/assets/features/instant-delivery.jpg";
 import womenSafety from "@/assets/features/women-safety.jpg";
+import winnerBadge from "@/assets/winner-badge.png";
 
 const Statement = () => {
   const features = [
@@ -11,6 +12,7 @@ const Statement = () => {
       title: "Trained & Certified Reel Makers",
       description: "Each Partner clears 6 filters to get their certification",
       image: certifiedCreator,
+      badge: winnerBadge,
     },
     {
       title: "Easy Booking",
@@ -60,6 +62,13 @@ const Statement = () => {
               // Increased the blue tint and opacity for a stronger "blue glass" look
               className="group relative overflow-hidden rounded-2xl bg-card backdrop-blur-md border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30"
             >
+              {'badge' in feature && feature.badge && (
+                <img
+                  src={feature.badge}
+                  alt="Certified Badge"
+                  className="absolute top-4 right-4 w-16 h-16 md:w-20 md:h-20 z-10"
+                />
+              )}
               <div className="flex flex-col sm:flex-row items-center gap-6 p-6 md:p-8">
                 <div className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden">
                   <img
