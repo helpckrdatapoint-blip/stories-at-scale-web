@@ -62,20 +62,21 @@ const Statement = () => {
               // Increased the blue tint and opacity for a stronger "blue glass" look
               className="group relative overflow-hidden rounded-2xl bg-card backdrop-blur-md border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30"
             >
-              {'badge' in feature && feature.badge && (
-                <img
-                  src={feature.badge}
-                  alt="Certified Badge"
-                  className="absolute top-4 right-4 w-16 h-16 md:w-20 md:h-20 z-10"
-                />
-              )}
               <div className="flex flex-col sm:flex-row items-center gap-6 p-6 md:p-8">
-                <div className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden">
-                  <img
-                    src={feature.image}
-                    alt={feature.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+                <div className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden flex items-center justify-center">
+                  {'badge' in feature && feature.badge ? (
+                    <img
+                      src={feature.badge}
+                      alt="Certified Badge"
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <img
+                      src={feature.image}
+                      alt={feature.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  )}
                 </div>
                 <div className="flex-1 text-center sm:text-left">
                   {/* Text colors adjusted slightly for the stronger blue background,
