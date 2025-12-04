@@ -1,115 +1,201 @@
-import { Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
+"use client";
 
-// To use the "Bricolage Grotesque" font, first add it from Google Fonts to your project's HTML file:
-// <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
-//
-// Then, add the font family to your tailwind.config.js:
-// theme: {
-//   extend: {
-//     fontFamily: {
-//       bricolage: ['"Bricolage Grotesque"', 'sans-serif'],
-//     },
-//   },
-// },
+import { motion } from "framer-motion";
+import { Instagram, Facebook, Linkedin, Twitter, ArrowUpRight, Send } from 'lucide-react';
 
 const ContactSection = () => {
+  
+  const formVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.6, staggerChildren: 0.1 } 
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
-    // Add the 'font-bricolage' class here to apply the new font
-    <div className="bg-background font-bricolage w-full">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+    <section id="contact" className="relative w-full bg-[#0a0a0a] py-24 sm:py-32 overflow-hidden font-sans">
+      
+      {/* --- Background Effects --- */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-yellow-500/5 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
           
-          {/* Left Column: Contact Info */}
-          <div className="flex flex-col">
-            <h1 className="text-4xl sm:text-5xl font-medium text-foreground mb-10">
-              Get in touch
-            </h1>
-            <div className="space-y-6 text-base sm:text-lg text-foreground/80">
-              <div>
-                <p className="font-medium text-foreground/60">Email:</p>
-                <a href="mailto:hello@storiesatscale.in" className="hover:text-primary transition-colors">
-                hello@storiesatscale.in
-                </a>
-              </div>
-              <div>
-                <p className="font-medium text-foreground/60">Phone:</p>
-                <a href="tel:+917425882688" className="hover:text-primary transition-colors">
-                +91 7425882688
-                </a>
-              </div>
+          {/* --- LEFT COLUMN: INFO --- */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={formVariants}
+            className="flex flex-col justify-between h-full"
+          >
+            <div>
+              <motion.div variants={itemVariants} className="inline-block px-3 py-1 mb-6 border border-yellow-500/30 bg-yellow-500/10 text-yellow-500 text-xs font-bold uppercase tracking-widest backdrop-blur-md">
+                Contact Us
+              </motion.div>
+              
+              <motion.h1 variants={itemVariants} className="text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-none">
+                Let's start a <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
+                  conversation.
+                </span>
+              </motion.h1>
+
+              <motion.p variants={itemVariants} className="text-lg text-gray-400 max-w-md mb-12 leading-relaxed font-light">
+                Ready to scale your reach? Tell us about your project, and we'll help you build a viral strategy.
+              </motion.p>
             </div>
+
+            <motion.div variants={itemVariants} className="space-y-8">
+              {/* Email */}
+              <div className="group">
+                <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">Email</p>
+                <a href="mailto:hello@storiesatscale.in" className="text-2xl sm:text-3xl text-white font-medium hover:text-yellow-500 transition-colors flex items-center gap-2 group-hover:translate-x-2 duration-300">
+                  hello@dhashamedia.com
+                  <ArrowUpRight className="opacity-0 group-hover:opacity-100 transition-opacity w-6 h-6" />
+                </a>
+              </div>
+
+              {/* Phone */}
+              <div className="group">
+                <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">Phone</p>
+                <a href="tel:+91 98765 43210" className="text-2xl sm:text-3xl text-white font-medium hover:text-yellow-500 transition-colors flex items-center gap-2 group-hover:translate-x-2 duration-300">
+                  +91 98765 43210
+                  <ArrowUpRight className="opacity-0 group-hover:opacity-100 transition-opacity w-6 h-6" />
+                </a>
+              </div>
+            </motion.div>
             
             {/* Social Media Links */}
-            <div className="mt-12">
-              <p className="font-medium text-foreground/60 mb-3">Follow us</p>
-              <div className="flex space-x-3">
-                <a href="#" className="w-9 h-9 bg-primary text-black rounded-full flex items-center justify-center hover:bg-primary/80 transition-colors">
-                  <Instagram size={18} />
-                </a>
-                <a href="#" className="w-9 h-9 bg-primary text-black rounded-full flex items-center justify-center hover:bg-primary/80 transition-colors">
-                  <Facebook size={18} />
-                </a>
-                <a href="#" className="w-9 h-9 bg-primary text-black rounded-full flex items-center justify-center hover:bg-primary/80 transition-colors">
-                  <Linkedin size={18} />
-                </a>
-                <a href="#" className="w-9 h-9 bg-primary text-black rounded-full flex items-center justify-center hover:bg-primary/80 transition-colors">
-                  <Twitter size={18} />
-                </a>
+            <motion.div variants={itemVariants} className="mt-16 pt-8 border-t border-white/10">
+              <div className="flex space-x-6">
+                {[
+                  { icon: Instagram, href: "#" },
+                  { icon: Facebook, href: "#" },
+                  { icon: Linkedin, href: "#" },
+                  { icon: Twitter, href: "#" }
+                ].map((Social, index) => (
+                  <a 
+                    key={index}
+                    href={Social.href} 
+                    className="group relative flex h-12 w-12 items-center justify-center border border-white/10 bg-white/5 transition-all hover:bg-yellow-500 hover:border-yellow-500 rounded-none"
+                  >
+                    <Social.icon size={20} className="text-gray-400 transition-colors group-hover:text-black" />
+                  </a>
+                ))}
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
           
-          {/* Right Column: Contact Form */}
-          <div>
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground/70 mb-2 pl-4">
-                    Your Name
-                  </label>
+          {/* --- RIGHT COLUMN: FORM --- */}
+          <motion.div 
+             initial={{ opacity: 0, x: 20 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.6, delay: 0.2 }}
+             className="relative"
+          >
+            <form className="space-y-12 bg-transparent">
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                {/* Name Input */}
+                <div className="relative group">
                   <input
                     type="text"
                     id="name"
-                    placeholder="Your full name"
-                    className="w-full px-6 py-4 bg-card text-foreground rounded-full border border-border focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                    required
+                    className="peer w-full bg-transparent border-b border-white/20 py-4 text-xl text-white outline-none transition-all focus:border-yellow-500 placeholder-transparent"
+                    placeholder="Your Name"
                   />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground/70 mb-2 pl-4">
-                    Email address
+                  <label 
+                    htmlFor="name" 
+                    className="absolute left-0 top-4 text-lg text-gray-500 transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-yellow-500 peer-focus:uppercase peer-focus:tracking-widest peer-[&:not(:placeholder-shown)]:-top-6 peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:text-gray-400 peer-[&:not(:placeholder-shown)]:uppercase peer-[&:not(:placeholder-shown)]:tracking-widest pointer-events-none"
+                  >
+                    Your Name
                   </label>
+                </div>
+
+                {/* Email Input */}
+                <div className="relative group">
                   <input
                     type="email"
                     id="email"
-                    placeholder="Your email address"
-                    className="w-full px-6 py-4 bg-card text-foreground rounded-full border border-border focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                    required
+                    className="peer w-full bg-transparent border-b border-white/20 py-4 text-xl text-white outline-none transition-all focus:border-yellow-500 placeholder-transparent"
+                    placeholder="Email Address"
                   />
+                  <label 
+                    htmlFor="email" 
+                    className="absolute left-0 top-4 text-lg text-gray-500 transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-yellow-500 peer-focus:uppercase peer-focus:tracking-widest peer-[&:not(:placeholder-shown)]:-top-6 peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:text-gray-400 peer-[&:not(:placeholder-shown)]:uppercase peer-[&:not(:placeholder-shown)]:tracking-widest pointer-events-none"
+                  >
+                    Email Address
+                  </label>
                 </div>
               </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground/70 mb-2 pl-4">
-                  Message
+
+              {/* Subject Input */}
+              <div className="relative group">
+                <input
+                  type="text"
+                  id="subject"
+                  className="peer w-full bg-transparent border-b border-white/20 py-4 text-xl text-white outline-none transition-all focus:border-yellow-500 placeholder-transparent"
+                  placeholder="Subject"
+                />
+                <label 
+                  htmlFor="subject" 
+                  className="absolute left-0 top-4 text-lg text-gray-500 transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-yellow-500 peer-focus:uppercase peer-focus:tracking-widest peer-[&:not(:placeholder-shown)]:-top-6 peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:text-gray-400 peer-[&:not(:placeholder-shown)]:uppercase peer-[&:not(:placeholder-shown)]:tracking-widest pointer-events-none"
+                >
+                  Subject (Optional)
                 </label>
+              </div>
+
+              {/* Message Textarea */}
+              <div className="relative group">
                 <textarea
                   id="message"
-                  rows={8}
-                  placeholder="Write something...."
-                  className="w-full px-6 py-4 bg-card text-foreground rounded-2xl border border-border focus:ring-2 focus:ring-primary focus:border-transparent transition resize-none"
+                  rows={4}
+                  required
+                  className="peer w-full resize-none bg-transparent border-b border-white/20 py-4 text-xl text-white outline-none transition-all focus:border-yellow-500 placeholder-transparent"
+                  placeholder="Your Message"
                 ></textarea>
+                <label 
+                  htmlFor="message" 
+                  className="absolute left-0 top-4 text-lg text-gray-500 transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-yellow-500 peer-focus:uppercase peer-focus:tracking-widest peer-[&:not(:placeholder-shown)]:-top-6 peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:text-gray-400 peer-[&:not(:placeholder-shown)]:uppercase peer-[&:not(:placeholder-shown)]:tracking-widest pointer-events-none"
+                >
+                  Tell us about your project...
+                </label>
               </div>
-              <div>
+
+              {/* Submit Button */}
+              <div className="pt-6">
                 <button
                   type="submit"
-                  className="w-full px-6 py-4 bg-primary text-black font-semibold rounded-full hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-300"
+                  // CHANGED: rounded-full to rounded-none for sharp edges
+                  className="group relative w-full sm:w-auto overflow-hidden rounded-none bg-yellow-500 px-10 py-5 font-bold text-black transition-all hover:bg-yellow-400 shadow-[0_5px_20px_-5px_rgba(234,179,8,0.4)]"
                 >
-                  Send Message
+                  <span className="relative z-10 flex items-center justify-center gap-3">
+                    Send Message <Send className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  </span>
+                  
+                  {/* Button Glare Effect */}
+                  <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-0"></div>
                 </button>
               </div>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
