@@ -6,6 +6,7 @@ import instantDelivery from "@/assets/features/instant-delivery.jpg";
 import womenSafety from "@/assets/features/women-safety.jpg";
 import winnerBadge from "@/assets/winner-badge.png";
 import lockIcon from "@/assets/lock.png";
+import courierIcon from "@/assets/courier.png";
 
 const Statement = () => {
   const features = [
@@ -35,6 +36,7 @@ const Statement = () => {
       title: "Instant Reels, Instant Editing",
       description: "No hidden charges! Clients get upfront pricing, secure payment options, and a seamless checkout experience.",
       image: instantDelivery,
+      badge: courierIcon,
     },
     {
       title: "Women Safety",
