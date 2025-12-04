@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { MessageCircle, X, Send } from 'lucide-react';
+import { MessageSquareText, X, Send } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -132,33 +132,10 @@ const ChatBot = () => {
     }
   };
 
-  // macOS-like spring animation variants
   const chatWindowVariants = {
-    initial: {
-      opacity: 0,
-      scale: 0.5,
-      y: 20,
-    },
-    animate: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        type: 'spring' as const,
-        stiffness: 300,
-        damping: 30,
-      },
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.5,
-      y: 20,
-      transition: {
-        type: 'spring' as const,
-        stiffness: 300,
-        damping: 30,
-      },
-    },
+    initial: { opacity: 0, scale: 0.5, y: 20 },
+    animate: { opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 30 } },
+    exit: { opacity: 0, scale: 0.5, y: 20, transition: { type: 'spring', stiffness: 300, damping: 30 } },
   };
 
   return (
@@ -167,7 +144,11 @@ const ChatBot = () => {
       <div className="fixed bottom-6 right-6 z-50">
         <Button
           onClick={() => setIsOpen(!isOpen)}
-          className="rounded-full w-16 h-16 shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-primary/90"
+          // CHANGED: 
+          // 1. bg-yellow-400 (Yellow background)
+          // 2. hover:bg-yellow-500 (Darker yellow on hover)
+          // 3. text-black (Ensures icon is black on yellow)
+          className="rounded-2xl w-16 h-16 shadow-2xl hover:shadow-xl transition-all duration-300 bg-yellow-400 hover:bg-yellow-500 text-black border-none"
           size="icon"
           aria-label="Toggle Chat"
         >
@@ -179,7 +160,11 @@ const ChatBot = () => {
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              {isOpen ? <X className="w-7 h-7 text-white" /> : <MessageCircle className="w-7 h-7 text-white" />}
+              {isOpen ? (
+                <X className="w-7 h-7 text-black" />
+              ) : (
+                <MessageSquareText className="w-7 h-7 text-black" />
+              )}
             </motion.div>
           </AnimatePresence>
         </Button>
