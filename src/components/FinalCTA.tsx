@@ -48,7 +48,7 @@ const FinalCTA = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="text-lg px-8 py-6 rounded-full border-primary text-foreground hover:bg-primary hover:text-black"
+              className="text-lg px-8 py-6 rounded-full"
               onClick={() => {
                 const el = document.getElementById('pricing');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
