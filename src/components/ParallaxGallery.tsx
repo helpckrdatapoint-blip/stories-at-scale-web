@@ -7,7 +7,6 @@ const DEMO_VIDEO_URL = "https://www.w3schools.com/html/mov_bbb.mp4";
 
 const videos = new Array(13).fill(DEMO_VIDEO_URL);
 
-
 const ParallaxGallery = () => {
   const gallery = useRef<HTMLDivElement>(null);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
@@ -48,36 +47,78 @@ const ParallaxGallery = () => {
 
   return (
     <div className="w-full bg-background">
-      <div className="flex h-[20vh] items-center justify-center py-8">
-        <div className="grid content-start w-full max-w-7xl px-4 mx-auto text-center"> 
-          <h2 className="text-5xl font-semibold text-foreground md:text-6xl">
-            Our <span className="text-primary">Viral Work</span> <span className="underline decoration-primary decoration-4">Showcase</span>
-          </h2>
-          <p className="max-w-3xl text-xl text-foreground/80 mt-2 mx-auto">
-            Explore a selection of high-impact Instagram Reels and short-form videos crafted by our certified creators. See the difference quality production makes.
-          </p>
+      
+      {/* --- START: PROFESSIONAL HEADER --- */}
+      <section className="relative flex min-h-[60vh] flex-col items-center justify-center pt-20 pb-12">
+        
+        {/* Animated content container */}
+        <div className="flex flex-col items-center text-center z-10 max-w-5xl px-6">
+          
+          {/* 1. Small 'Eyebrow' Label */}
+          <motion.div 
+             initial={{ opacity: 0, y: 10 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ duration: 0.6, ease: "easeOut" }}
+             className="mb-8 flex flex-col items-center gap-4"
+          >
+            {/* Vertical Line for structure */}
+            <div className="h-12 w-[1px] bg-border/60"></div>
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/80">
+              Agency Portfolio
+            </span>
+          </motion.div>
+
+          {/* 2. Main Headline - Large, clean, tight tracking */}
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-6xl font-bold tracking-tighter text-foreground sm:text-7xl md:text-8xl lg:text-9xl"
+          >
+            Viral <span className="text-primary opacity-90">Work</span>
+          </motion.h1>
+
+          <motion.div
+             initial={{ opacity: 0, width: 0 }}
+             animate={{ opacity: 1, width: "100px" }}
+             transition={{ duration: 1, delay: 0.4 }}
+             className="my-8 h-1 rounded-full bg-primary"
+          />
+
+          {/* 3. Subtitle - Clean sans-serif, constrained width */}
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="max-w-xl text-lg font-light leading-relaxed text-muted-foreground sm:text-xl"
+          >
+            A curated selection of high-impact short-form content. 
+            <br className="hidden sm:block"/>
+            Precision editing meets algorithmic performance.
+          </motion.p>
+
         </div>
-      </div>
+      </section>
+      {/* --- END: PROFESSIONAL HEADER --- */}
 
       <div
         ref={gallery}
         className="relative box-border flex h-[175vh] gap-[2vw] overflow-hidden p-[2vw]"
       >
-        {/* Pass videos in chunks for the columns */}
         <Column videos={videos.slice(0, 3)} y={y} />
         <Column videos={videos.slice(3, 6)} y={y2} />
         <Column videos={videos.slice(6, 9)} y={y3} />
         <Column videos={videos.slice(9, 12)} y={y4} />
       </div>
 
-      <div className="flex h-[20vh] items-center justify-center py-8">
-        <div className="grid content-start justify-items-center gap-4 text-center">
-          <p className="max-w-2xl text-base text-muted-foreground">
-            Ready to create viral content that stands out?
+      <div className="flex h-[40vh] items-center justify-center py-8">
+        <div className="grid content-start justify-items-center gap-6 text-center">
+          <p className="max-w-2xl text-xl font-medium tracking-tight text-foreground">
+            Ready to elevate your brand presence?
           </p>
-          {/* Button color is gold (bg-primary) */}
-          <button className="mt-4 rounded-full bg-primary px-8 py-3 font-semibold text-black shadow-xl transition duration-300 hover:bg-primary/90">
-            Book Now
+          <button className="group relative overflow-hidden rounded-full bg-primary px-10 py-4 font-semibold text-black transition-all hover:scale-105">
+            <span className="relative z-10">Book a Consultation</span>
+            <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-500 group-hover:translate-x-0"></div>
           </button>
         </div>
       </div>
@@ -97,15 +138,14 @@ const Column = ({ videos, y }: ColumnProps) => {
       style={{ y }}
     >
       {videos.map((src, i) => ( 
-        <div key={i} className="relative h-full w-full overflow-hidden rounded-lg">
+        <div key={i} className="relative h-full w-full overflow-hidden rounded-sm bg-muted">
           <video
             src={src}
             autoPlay 
             loop     
             muted    
             playsInline 
-            title={`Dhasha Media Reel Showcase ${i + 1}`}
-            className="pointer-events-none h-full w-full object-cover"
+            className="h-full w-full object-cover opacity-90 transition-opacity duration-500 hover:opacity-100"
             poster="https://via.placeholder.com/300x500/000000/FFFFFF?text=Loading+Video" 
           />
         </div>
