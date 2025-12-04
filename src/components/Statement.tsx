@@ -5,6 +5,7 @@ import secure from "@/assets/features/secure.jpg";
 import instantDelivery from "@/assets/features/instant-delivery.jpg";
 import womenSafety from "@/assets/features/women-safety.jpg";
 import winnerBadge from "@/assets/winner-badge.png";
+import lockIcon from "@/assets/lock.png";
 
 const Statement = () => {
   const features = [
@@ -28,6 +29,7 @@ const Statement = () => {
       title: "Safe & Secure",
       description: "You & Your data is safe and secured.",
       image: secure,
+      badge: lockIcon,
     },
     {
       title: "Instant Reels, Instant Editing",
