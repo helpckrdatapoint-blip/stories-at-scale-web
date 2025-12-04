@@ -7,6 +7,8 @@ import womenSafety from "@/assets/features/women-safety.jpg";
 import winnerBadge from "@/assets/winner-badge.png";
 import lockIcon from "@/assets/lock.png";
 import courierIcon from "@/assets/courier.png";
+import girlIcon from "@/assets/girl.png";
+import discountIcon from "@/assets/discount-tag.png";
 
 const Statement = () => {
   const features = [
@@ -25,6 +27,7 @@ const Statement = () => {
       title: "Unbelievable Pricing",
       description: "Each Reel starts ₹1999/-",
       image: pricing,
+      badge: discountIcon,
     },
     {
       title: "Safe & Secure",
@@ -42,6 +45,7 @@ const Statement = () => {
       title: "Women Safety",
       description: "A women can book a female Reel maker",
       image: womenSafety,
+      badge: girlIcon,
     },
   ];
 
