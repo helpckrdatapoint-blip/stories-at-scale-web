@@ -1,57 +1,57 @@
-// slider.tsx
-import React from 'react';
+"use client";
 
-// Data array for Dhasha Media related social proof phrases
+import React from "react";
+import { motion } from "framer-motion";
+
 const dhashaMediaWords = [
-    "Digital Strategy",
-    "Viral Reels Production",
-    "Content Marketing",
-    "SEO Optimization",
-    "Paid Ads Management",
-    "Brand Storytelling",
-    "Performance Focused"
+  "Digital Strategy",
+  "Viral Reels Production",
+  "Content Marketing",
+  "SEO Optimization",
+  "Paid Ads Management",
+  "Brand Storytelling",
+  "Performance Focused",
 ];
-  
-// Separator element
-const Separator = () => (
-    <span className="text-3xl md:text-4xl mx-8" style={{ color: '#000000' }}>*</span>
-);
-  
-const SocialProof = () => {
-    // Create an array with words interleaved with separators
-    const marqueeContent = dhashaMediaWords.flatMap((word, index) => {
-        // Only add the separator after the word, not at the end of the last word
-        return index < dhashaMediaWords.length - 1
-            ? [<span key={`word-${index}`} className="text-3xl md:text-4xl mx-8" style={{ color: '#000000' }}>{word}</span>, <Separator key={`sep-${index}`} />]
-            : [<span key={`word-${index}`} className="text-3xl md:text-4xl mx-8" style={{ color: '#000000' }}>{word}</span>];
-    });
 
-    // To ensure a seamless loop, we need to repeat the content.
-    // We add one final separator at the end of the first set to smoothly transition to the start of the repeated set.
-    const fullContent = [...marqueeContent, <Separator key="final-sep" />, ...marqueeContent, <Separator key="final-sep-2" />];
-    
-    return (
-      // Section with gold background
-      <section id="social-proof" className="w-full py-10 overflow-hidden" style={{ backgroundColor: '#FFD700' }}>
-        {/* CSS animation for the marquee effect */}
-        <style>
-          {`
-            @keyframes marquee {
-              0% { transform: translateX(0%); }
-              100% { transform: translateX(-50%); }
-            }
-            .animate-marquee {
-              animation: marquee 20s linear infinite;
-            }
-          `}
-        </style>
-  
-        {/* The width is set to w-max to contain all rendered content. */}
-        <div className="flex w-max items-center animate-marquee">
-          {fullContent}
-        </div>
-      </section>
-    );
+const SocialProof = () => {
+  return (
+    <section className="relative w-full py-6 bg-yellow-500 overflow-hidden border-y border-yellow-600 z-20">
+      
+      {/* Optional: Subtle Grain Texture for the Dhasha Standard look */}
+      <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay pointer-events-none"></div>
+
+      <div className="flex overflow-hidden">
+        <motion.div
+          initial={{ x: 0 }}
+          animate={{ x: "-50%" }}
+          transition={{
+            duration: 30, // Adjusts speed
+            ease: "linear",
+            repeat: Infinity,
+          }}
+          className="flex min-w-full items-center gap-12 whitespace-nowrap pr-12"
+        >
+          {/* 
+             We render the list twice to create a seamless infinite loop.
+             Every item gets a separator to ensure spacing between the last item 
+             of set 1 and the first item of set 2.
+          */}
+          {[...dhashaMediaWords, ...dhashaMediaWords].map((word, index) => (
+            <div key={index} className="flex items-center gap-12">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-black">
+                {word}
+              </span>
+              
+              {/* Vertical Pipe Separator */}
+              <span className="text-3xl sm:text-4xl md:text-5xl font-light text-black/40 pb-1">
+                |
+              </span>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
 };
-  
+
 export default SocialProof;
