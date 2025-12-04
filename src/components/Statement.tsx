@@ -79,7 +79,7 @@ const Statement = () => {
                     <img
                       src={feature.badge}
                       alt="Certified Badge"
-                      className="w-full h-full object-contain icon-primary-tint"
+                      className="w-full h-full object-contain"
                     />
                   ) : (
                     <img
