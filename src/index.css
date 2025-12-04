@@ -128,6 +128,10 @@ All colors MUST be HSL.
     opacity: 0;
   }
 
+  .icon-primary-tint {
+    filter: sepia(1) saturate(5) brightness(1) hue-rotate(10deg);
+  }
+
   @keyframes scroll {
     0% {
       transform: translateX(0);
