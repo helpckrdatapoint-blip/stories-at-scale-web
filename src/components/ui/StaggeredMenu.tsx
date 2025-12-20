@@ -1,5 +1,6 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import { useNavigate } from 'react-router-dom';
 import './StaggeredMenu.css';
 
 export const StaggeredMenu = ({
@@ -33,6 +34,7 @@ export const StaggeredMenu = ({
   onMenuOpen?: () => void;
   onMenuClose?: () => void;
 }) => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
   const panelRef = useRef(null);
@@ -327,6 +329,39 @@ export const StaggeredMenu = ({
     animateText(target);
   }, [playOpen, playClose, animateIcon, animateColor, animateText, onMenuOpen, onMenuClose]);
 
+  const handleLinkClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
+    e.preventDefault();
+    
+    // Close menu first if it's open
+    if (openRef.current && !busyRef.current) {
+      const target = false;
+      openRef.current = target;
+      setOpen(target);
+      onMenuClose?.();
+      playClose();
+      animateIcon(target);
+      animateColor(target);
+      animateText(target);
+    }
+    
+    // Handle hash links for smooth scrolling
+    if (link.startsWith('#')) {
+      const elementId = link.substring(1);
+      // Small delay to allow menu to close
+      setTimeout(() => {
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 400);
+    } else {
+      // Handle regular navigation with a small delay
+      setTimeout(() => {
+        navigate(link);
+      }, 300);
+    }
+  }, [navigate, playClose, animateIcon, animateColor, animateText, onMenuClose]);
+
   return (
     <div
       className={(className ? className + ' ' : '') + 'staggered-menu-wrapper'}
@@ -337,7 +372,7 @@ export const StaggeredMenu = ({
       <div ref={preLayersRef} className="sm-prelayers" aria-hidden="true">
         {(() => {
           const raw = colors && colors.length ? colors.slice(0, 4) : ['#1e1e22', '#35353c'];
-          let arr = [...raw];
+          const arr = [...raw];
           if (arr.length >= 3) {
             const mid = Math.floor(arr.length / 2);
             arr.splice(mid, 1);
@@ -346,7 +381,13 @@ export const StaggeredMenu = ({
         })()}
       </div>
       <header className="staggered-menu-header" aria-label="Main navigation header">
-        <div className="sm-logo" aria-label="Logo">
+        <button
+          onClick={() => navigate('/')}
+          className="sm-logo"
+          aria-label="Logo - Go to home page"
+          type="button"
+          style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+        >
           <img
             src={logoUrl || '/src/assets/logos/reactbits-gh-white.svg'}
             alt="Logo"
@@ -355,7 +396,7 @@ export const StaggeredMenu = ({
             width={110}
             height={24}
           />
-        </div>
+        </button>
         <button
           ref={toggleBtnRef}
           className="sm-toggle"
@@ -387,7 +428,13 @@ export const StaggeredMenu = ({
             {items && items.length ? (
               items.map((it, idx) => (
                 <li className="sm-panel-itemWrap" key={it.label + idx}>
-                  <a className="sm-panel-item" href={it.link} aria-label={it.ariaLabel} data-index={idx + 1}>
+                  <a 
+                    className="sm-panel-item" 
+                    href={it.link} 
+                    aria-label={it.ariaLabel} 
+                    data-index={idx + 1}
+                    onClick={(e) => handleLinkClick(e, it.link)}
+                  >
                     <span className="sm-panel-itemLabel">{it.label}</span>
                   </a>
                 </li>
