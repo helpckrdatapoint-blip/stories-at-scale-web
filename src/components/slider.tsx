@@ -1,50 +1,97 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  useMotionValue,
+  useVelocity,
+  useAnimationFrame,
+} from "framer-motion";
+import { Star, StarIcon, Stars } from "lucide-react";
 
-const socialProofWords = [
-  "Wedding Reels",
-  "Youtube Videos",
-  "Cinematic Videos",
-  "Content Creation",
-  "Instant Reels",
-  "Creative Collaboration",
-  "Business Promotions",
-  "News",
-  "Event Management",
-  "Drone Shoots",
-];
 
-const SocialProof = () => {
+
+const wrap = (min, max, v) => {
+  const rangeSize = max - min;
+  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
+};
+
+const SocialProof = ({ info }: { info: string[] }) => {
+  const baseX = useMotionValue(0);
+  const { scrollY } = useScroll();
+  const scrollVelocity = useVelocity(scrollY);
+  const smoothVelocity = useSpring(scrollVelocity, {
+    damping: 50,
+    stiffness: 400,
+  });
+  
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 1.5], {
+    clamp: false,
+  });
+
+  const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+
+  const directionFactor = useRef(1);
+  const baseSpeed = useRef(0.5); 
+
+  useAnimationFrame((t, delta) => {
+    let moveBy = directionFactor.current * baseSpeed.current * (delta / 1000);
+
+    if (velocityFactor.get() < 0) {
+      directionFactor.current = -1;
+    } else if (velocityFactor.get() > 0) {
+      directionFactor.current = 1;
+    }
+
+    moveBy += directionFactor.current * moveBy * velocityFactor.get();
+
+    baseX.set(baseX.get() + moveBy);
+  });
+
+  const handleMouseEnter = () => {
+    baseSpeed.current = 0.2; 
+  };
+
+  const handleMouseLeave = () => {
+    baseSpeed.current = 0.5; 
+  };
+
   return (
-    <section className="relative w-full py-5 bg-yellow-500 overflow-hidden border-y border-yellow-600 z-20">
-      
-      {/* Optional: Subtle Grain Texture */}
-      <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay pointer-events-none"></div>
-
-      <div className="flex overflow-hidden">
+    <section 
+        className="relative w-full py-6 bg-[#FACC15] overflow-hidden border-y border-black z-20"
+    >
+      <div className="flex overflow-hidden select-none">
         <motion.div
-          initial={{ x: 0 }}
-          animate={{ x: "-50%" }}
-          transition={{
-            duration: 30,
-            ease: "linear",
-            repeat: Infinity,
-          }}
-          className="flex min-w-full items-center gap-12 whitespace-nowrap pr-12"
+          className="flex flex-nowrap whitespace-nowrap"
+          style={{ x }}
         >
-          {/* Render list twice for seamless loop */}
-          {[...socialProofWords, ...socialProofWords].map((word, index) => (
-            <div key={index} className="flex items-center gap-12">
-              <span className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-black">
-                {word}
-              </span>
-              
-              {/* Vertical Pipe Separator */}
-              <span className="text-3xl sm:text-4xl md:text-5xl font-light text-black/40 pb-1">
-                |
-              </span>
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="flex items-center gap-10 mr-10">
+              {info.map((word, index) => {
+                const isOutline = index % 2 !== 0;
+                return (
+                  <div key={index} className="flex items-center gap-10">
+                    <span
+                      className={`
+                        text-5xl md:text-7xl font-extrabold uppercase tracking-tight
+                        transition-all duration-300 ease-out
+                        ${isOutline ? "text-transparent hover:text-black hover:opacity-100 opacity-80" : "text-black"}
+                      `}
+                      style={{
+                        WebkitTextStroke: isOutline ? "1.5px black" : "unset",
+                      }}
+                    >
+                      {word}
+                    </span>
+                    <span className="text-black/80 text-3xl text-center md:text-5xl pb-2">
+                        <Stars fill="black" size={65} />
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           ))}
         </motion.div>

@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  z-index: 40;
+  z-index: 100;
 }
 
 .staggered-menu-header {
@@ -16,7 +16,7 @@
   padding: 1.5rem 2rem;
   background: transparent;
   pointer-events: none;
-  z-index: 50;
+  z-index: 100;
   transform: translateY(0);
   transition: transform 0.3s ease;
 }
@@ -31,7 +31,13 @@
   user-select: none;
   font-weight: bold;
   font-size: 1.25rem;
-  color: #FFD700;
+  color: #ffffff;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.sm-logo:hover {
+  opacity: 0.8;
 }
 
 .sm-logo-img {
@@ -42,7 +48,7 @@
   content: "Dhasha Media";
   font-weight: bold;
   font-size: 1.25rem;
-  color: #FFD700;
+  color: #ffffff;
 }
 
 .sm-toggle {
@@ -140,7 +146,7 @@
   flex-direction: column;
   padding: 6em 2em 2em 2em;
   overflow-y: auto;
-  z-index: 40;
+  z-index: 99;
   transform: translateY(0);
 }
 
@@ -157,7 +163,7 @@
   width: clamp(260px, 38vw, 420px);
   height: 100vh;
   pointer-events: none;
-  z-index: 35;
+  z-index: 98;
 }
 
 [data-position='left'] .sm-prelayers {

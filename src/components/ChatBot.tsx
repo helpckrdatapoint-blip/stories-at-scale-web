@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MessageSquareText, X, Send } from 'lucide-react';
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 
 interface Message {
   id: string;
@@ -132,7 +132,7 @@ const ChatBot = () => {
     }
   };
 
-  const chatWindowVariants = {
+  const chatWindowVariants:Variants = {
     initial: { opacity: 0, scale: 0.5, y: 20 },
     animate: { opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 30 } },
     exit: { opacity: 0, scale: 0.5, y: 20, transition: { type: 'spring', stiffness: 300, damping: 30 } },
@@ -178,6 +178,7 @@ const ChatBot = () => {
             initial="initial"
             animate="animate"
             exit="exit"
+            transition={{ type: "spring", stiffness: 300, damping: 30 }} // fix: provide a correct Transition type, not in the variant object
             className="fixed bottom-24 right-6 w-[380px] sm:w-[440px] h-[600px] z-50 origin-bottom-right"
           >
             <Card className="h-full w-full flex flex-col shadow-2xl border-border bg-background overflow-hidden">

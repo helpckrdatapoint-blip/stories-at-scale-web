@@ -13,6 +13,7 @@ import FinalCTA from "@/components/FinalCTA";
 import Contact from "@/components/Contact";
 import ChatBot from "@/components/ChatBot";
 import Footer from "@/components/Footer";
+import { socialProofWords } from "@/lib/info";
 
 const Index = () => {
   const scrollToSection = (sectionId: string) => {
@@ -44,8 +45,8 @@ const Index = () => {
         displaySocials={true}
         displayItemNumbering={true}
         menuButtonColor="#FFFFFF"
-        openMenuButtonColor="#FFFFFF"
-        changeMenuColorOnOpen={false}
+        openMenuButtonColor="#000000"
+        changeMenuColorOnOpen={true}
         colors={['#FFD700', '#FFA500']}
         accentColor="#FFD700"
         onMenuOpen={() => console.log('Menu opened')}
@@ -54,7 +55,7 @@ const Index = () => {
       <Hero />
     
       {/* Slider (Social Proof Marquee) */}
-      <Slider /> 
+      <Slider info={socialProofWords} /> 
       
       {/* NEW: Inserted Parallax Gallery to showcase work after the first marquee */}
      
